@@ -13,7 +13,6 @@ theme:
     - content.code.copy
 
 nav:
-  - Overview: index.md
   - Level 0 - Beginner: LEVEL_0_BEGINNER.md
   - Level 1 - Foundations: LEVEL_1_FOUNDATIONS.md
   - Level 2 - Intermediate: LEVEL_2_INTERMEDIATE.md
