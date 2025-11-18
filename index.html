@@ -12,8 +12,6 @@
       
       
       
-        <link rel="next" href="LEVEL_0_BEGINNER.html">
-      
       
         
       
@@ -80,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="DRF Training Guide" class="md-header__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+    <a href="." title="DRF Training Guide" class="md-header__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Django REST Framework Learning Guide
             
           </span>
         </div>
@@ -180,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="DRF Training Guide" class="md-nav__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+    <a href="." title="DRF Training Guide" class="md-nav__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -190,485 +188,6 @@
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#welcome" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Welcome! 👋
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#learning-path-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 Learning Path Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#time-estimates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⏱️ Time Estimates
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📋 Prerequisites
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📋 Prerequisites">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#required-knowledge" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Required Knowledge
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-helpful-but-not-required" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional (Helpful but Not Required)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-you-dont-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You DON'T Need
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-this-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 How to Use This Guide
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 How to Use This Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-by-step-approach" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step-by-Step Approach
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learning-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Learning Tips
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools-youll-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ Tools You'll Need
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🛠️ Tools You&#39;ll Need">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#required-software" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Required Software
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional Tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guide-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📖 Guide Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 Quick Start
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 Quick Start">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-complete-beginners" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Complete Beginners
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-those-with-python-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Those with Python Experience
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-those-with-django-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Those with Django Experience
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🐛 Troubleshooting
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🐛 Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Issues
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#virtual-environment-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Virtual Environment Problems
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#django-installation-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Django Installation Issues
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#database-migration-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database Migration Errors
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import Errors
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Getting Help
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 Additional Resources
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 Additional Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#official-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Official Documentation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recommended-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended Reading
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#video-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Video Resources
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#progress-checklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ Progress Checklist
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps-after-completion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎓 Next Steps After Completion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tips-for-success" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 Tips for Success
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ready-to-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎉 Ready to Start?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
     
       
       
@@ -854,10 +373,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -875,8 +394,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
