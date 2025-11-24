@@ -419,6 +419,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#class-based-views-cbv-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Class-Based Views (CBV) Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1855,8 +1866,24 @@
 <li><strong>Both examples</strong>: Help you understand different scenarios and patterns</li>
 </ul>
 <p>You can apply all concepts to any model (Task, Book, Product, Post, etc.).</p>
+<h2 id="class-based-views-cbv-approach">Class-Based Views (CBV) Approach<a class="headerlink" href="#class-based-views-cbv-approach" title="Permanent link">&para;</a></h2>
+<p><strong>This guide follows the Class-Based Views (CBV) approach</strong> throughout, which is the recommended and modern way to build DRF APIs:</p>
+<ul>
+<li>✅ <strong>ViewSets</strong> (<code>ModelViewSet</code>, <code>ReadOnlyViewSet</code>) - For CRUD operations</li>
+<li>✅ <strong>Generic Views</strong> (<code>CreateAPIView</code>, <code>ListAPIView</code>, etc.) - For specific operations</li>
+<li>✅ <strong>APIView</strong> - For custom logic when needed</li>
+<li>❌ <strong>Function-based views</strong> (<code>@api_view</code>) - Only used when absolutely necessary</li>
+</ul>
+<p><strong>Why Class-Based Views?</strong>
+- <strong>Reusable</strong>: Easy to extend and customize
+- <strong>DRY</strong>: Less code duplication
+- <strong>Built-in features</strong>: Authentication, permissions, filtering work automatically
+- <strong>Industry standard</strong>: Most DRF projects use CBV
+- <strong>Better organization</strong>: Clear separation of concerns</p>
+<p>All examples in this guide use class-based views unless explicitly noted otherwise.</p>
 <h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ol>
+<li><a href="#class-based-views-cbv-approach">Class-Based Views (CBV) Approach</a></li>
 <li><a href="#django-authentication-system">Django Authentication System</a></li>
 <li><a href="#drf-authentication-classes">DRF Authentication Classes</a></li>
 <li><a href="#jwt-authentication-setup">JWT Authentication Setup</a></li>
@@ -1901,17 +1928,24 @@
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
 
 <span class="c1"># User fields</span>
-<span class="n">user</span><span class="o">.</span><span class="n">username</span>  <span class="c1"># Username</span>
-<span class="n">user</span><span class="o">.</span><span class="n">email</span>     <span class="c1"># shed password</span>
-<span class="n">user</span><span class="o">.</span><span class="n">first_nameEmail</span>
-<span class="n">user</span><span class="o">.</span><span class="n">password</span>  <span class="c1"># Ha</span>
-<span class="n">user</span><span class="o">.</span><span class="n">last_name</span>
-<span class="n">user</span><span class="o">.</span><span class="n">is_staff</span>  <span class="c1"># Admin access</span>
-<span class="n">user</span><span class="o">.</span><span class="n">is_active</span> <span class="c1"># Account status</span>
-<span class="n">user</span><span class="o">.</span><span class="n">is_superuser</span>
-<span class="n">user</span><span class="o">.</span><span class="n">date_joined</span>
+<span class="n">user</span><span class="o">.</span><span class="n">username</span>      <span class="c1"># Username</span>
+<span class="n">user</span><span class="o">.</span><span class="n">email</span>         <span class="c1"># Email address</span>
+<span class="n">user</span><span class="o">.</span><span class="n">password</span>      <span class="c1"># Hashed password (never access directly)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">first_name</span>    <span class="c1"># First name</span>
+<span class="n">user</span><span class="o">.</span><span class="n">last_name</span>     <span class="c1"># Last name</span>
+<span class="n">user</span><span class="o">.</span><span class="n">is_staff</span>      <span class="c1"># Admin access (can access Django admin)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">is_active</span>     <span class="c1"># Account status (False = disabled account)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">is_superuser</span>  <span class="c1"># Superuser (all permissions)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">date_joined</span>   <span class="c1"># When user account was created</span>
 </code></pre></div>
 
+<p><strong>Explanation of key fields</strong>:
+- <strong><code>username</code></strong>: Unique identifier for login
+- <strong><code>email</code></strong>: User's email address
+- <strong><code>password</code></strong>: Stored as hash (never plain text)
+- <strong><code>is_staff</code></strong>: Can access Django admin panel
+- <strong><code>is_active</code></strong>: If False, user cannot login
+- <strong><code>is_superuser</code></strong>: Has all permissions automatically</p>
 <h3 id="creating-users">Creating Users<a class="headerlink" href="#creating-users" title="Permanent link">&para;</a></h3>
 <p><strong>Why multiple methods?</strong>
 - Different methods serve different purposes
@@ -3216,6 +3250,7 @@ curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Aut
 <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">exception_handler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -3292,7 +3327,8 @@ curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Aut
 <h3 id="handling-authentication-errors">Handling Authentication Errors<a class="headerlink" href="#handling-authentication-errors" title="Permanent link">&para;</a></h3>
 <p><strong>Customize authentication error responses:</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># api/exceptions.py</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuthenticationFailed</span><span class="p">,</span> <span class="n">NotAuthenticated</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">exception_handler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuthenticationFailed</span><span class="p">,</span> <span class="n">NotAuthenticated</span><span class="p">,</span> <span class="n">PermissionDenied</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">status</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">custom_exception_handler</span><span class="p">(</span><span class="n">exc</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
@@ -3891,9 +3927,22 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <span class="k">class</span><span class="w"> </span><span class="nc">TaskViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
     <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>  <span class="c1"># Must be logged in</span>
 
-<span class="c1"># Option 3: Check if user has permission</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">has_perm</span><span class="p">(</span><span class="s1">&#39;api.change_task&#39;</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Permission denied&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
+<span class="c1"># Option 3: Custom permission check in class-based view</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">status</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskAPIView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+        <span class="c1"># Check custom permission</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">has_perm</span><span class="p">(</span><span class="s1">&#39;api.change_task&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+                <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Permission denied&#39;</span><span class="p">},</span> 
+                <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span>
+            <span class="p">)</span>
+        <span class="c1"># ... rest of logic</span>
 </code></pre></div>
 
 <p><strong>Prevention</strong>: 
@@ -4075,23 +4124,28 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 - Owner not set in serializer
 - <code>perform_create</code> not setting owner</p>
 <p><strong>How to Fix</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># WRONG - Owner not set</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># WRONG - Standalone function (not recommended, use CBV instead)</span>
+<span class="c1"># This is what NOT to do:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_task</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># ❌ Function-based view</span>
     <span class="n">serializer</span> <span class="o">=</span> <span class="n">TaskSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
     <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># ❌ Owner not set!</span>
 
-<span class="c1"># CORRECT - Set owner in perform_create</span>
+<span class="c1"># CORRECT - Class-based ViewSet approach (recommended)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">TaskViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">perform_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
-        <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># ✅</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">TaskSerializer</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
 
-<span class="c1"># Or in serializer</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">perform_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
+        <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># ✅ Owner set automatically</span>
+
+<span class="c1"># Alternative: Set owner in serializer (also class-based)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">TaskSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
         <span class="n">validated_data</span><span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">user</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">validated_data</span><span class="p">)</span>
 </code></pre></div>
 
+<p><strong>Note</strong>: Always use class-based views (<code>ViewSet</code>, <code>APIView</code>) instead of function-based views. The <code>perform_create()</code> method is part of the class-based ViewSet, not a standalone function.</p>
 <p><strong>Prevention</strong>: Always set owner in <code>perform_create</code> or serializer's <code>create</code> method.</p>
 <hr />
 <h3 id="error-9-rest_frameworkexceptionsmethodnotallowed-method-patch-not-allowed">Error 9: <code>rest_framework.exceptions.MethodNotAllowed: Method 'PATCH' not allowed</code><a class="headerlink" href="#error-9-rest_frameworkexceptionsmethodnotallowed-method-patch-not-allowed" title="Permanent link">&para;</a></h3>
@@ -4107,19 +4161,30 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <div class="codehilite"><pre><span></span><code><span class="c1"># Check what methods are allowed</span>
 <span class="c1"># ViewSet automatically supports: GET, POST, PUT, PATCH, DELETE</span>
 
-<span class="c1"># If using APIView, must define method</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">TaskAPIView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>  <span class="c1"># ✅ Define PATCH method</span>
-        <span class="c1"># ...</span>
-
-<span class="c1"># If using ViewSet, PATCH is automatic</span>
+<span class="c1"># Option 1: Use ViewSet (recommended - automatic method support)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">TaskViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>  <span class="c1"># ✅ Supports PATCH automatically</span>
-    <span class="c1"># ...</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">TaskSerializer</span>
+    <span class="c1"># PATCH method works automatically, no need to define it</span>
+
+<span class="c1"># Option 2: Use APIView with explicit method (if you need custom logic)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskAPIView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>  <span class="c1"># ✅ Must explicitly define PATCH method</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="n">TaskSerializer</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 </code></pre></div>
 
 <p><strong>Prevention</strong>: 
-- Use ViewSet for automatic method support
-- Or explicitly define methods in APIView
+- ✅ <strong>Use ViewSet</strong> for automatic method support (recommended)
+- ✅ <strong>Use APIView</strong> only when you need custom logic
+- ❌ <strong>Avoid function-based views</strong> - use class-based approach
 - Check allowed methods in view</p>
 <hr />
 <h3 id="error-10-django_filtersexceptionsfielderror-metafields-contains-fields-that-are-not-defined-on-this-filterset">Error 10: <code>django_filters.exceptions.FieldError: Meta.fields contains fields that are not defined on this FilterSet</code><a class="headerlink" href="#error-10-django_filtersexceptionsfielderror-metafields-contains-fields-that-are-not-defined-on-this-filterset" title="Permanent link">&para;</a></h3>
