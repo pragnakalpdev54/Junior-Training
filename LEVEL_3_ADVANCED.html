@@ -436,6 +436,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#note-on-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note on Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -557,6 +568,17 @@
     <span class="md-ellipsis">
       
         Nested Serializer Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-manytomany-field-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important: ManyToMany Field Conflicts
       
     </span>
   </a>
@@ -1399,6 +1421,29 @@
 <h1 id="level-3-advanced-relationships-serializers-and-complex-logic">Level 3: Advanced - Relationships, Serializers, and Complex Logic<a class="headerlink" href="#level-3-advanced-relationships-serializers-and-complex-logic" title="Permanent link">&para;</a></h1>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
 <p>Build APIs with nested, related data and business logic. Master model relationships, nested serializers, query optimization, and background tasks. By the end of this level, you'll be able to build complex, efficient APIs.</p>
+<h2 id="note-on-examples">Note on Examples<a class="headerlink" href="#note-on-examples" title="Permanent link">&para;</a></h2>
+<p>This guide uses <strong>two different API examples</strong> to demonstrate different relationship patterns and advanced concepts:</p>
+<ul>
+<li><strong>Blog API (Post/Comment/Tag)</strong>: Used in concept explanations and the main step-by-step section to demonstrate:</li>
+<li>Complex relationships (ForeignKey, ManyToMany)</li>
+<li>Nested serializers with multiple related models</li>
+<li>Query optimization across relationships</li>
+<li>
+<p>Real-world content management patterns</p>
+</li>
+<li>
+<p><strong>Enhanced Task API</strong>: Used in a separate step-by-step section to show:</p>
+</li>
+<li>How to extend the Task API from Level 2 with relationships</li>
+<li>Adding categories, priorities, and assigned users</li>
+<li>Building on previous knowledge incrementally</li>
+<li>Practical task management features</li>
+</ul>
+<p><strong>Why two examples?</strong>
+- <strong>Blog API</strong> is ideal for demonstrating complex relationships (posts have comments, tags, authors)
+- <strong>Enhanced Task API</strong> builds on Level 2's Task API, showing progression
+- Different examples help you understand patterns that apply to any model
+- You can apply all concepts to your own projects (Task, Book, Product, Post, etc.)</p>
 <h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="#model-relationships">Model Relationships</a></li>
@@ -1544,12 +1589,15 @@
         <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
-        <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">author_id</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">author_id</span><span class="p">:</span>
+            <span class="n">validated_data</span><span class="p">[</span><span class="s1">&#39;author_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author_id</span>
         <span class="k">return</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="writable-nested-serializer">Writable Nested Serializer<a class="headerlink" href="#writable-nested-serializer" title="Permanent link">&para;</a></h3>
 <p>Allow creating/updating related objects through the parent.</p>
+<p><strong>⚠️ Important</strong>: When using nested serializers with ManyToMany fields, ensure the instance is saved before accessing ManyToMany relationships to avoid <code>AttributeError: 'NoneType' object has no attribute '_meta'</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># api/serializers.py</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">TagSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
@@ -1563,6 +1611,7 @@
         <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="c1"># Overriding model&#39;s ManyToMany &#39;tags&#39; field with nested serializer</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="n">TagSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">comments</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1573,9 +1622,15 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
         <span class="n">tags_data</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Authentication required to create posts&quot;</span><span class="p">)</span>
+        <span class="c1"># CRITICAL: Create instance first, then add ManyToMany relationships</span>
+        <span class="c1"># Author is read-only, so set it from request</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 
-        <span class="c1"># Create or get tags</span>
+        <span class="c1"># Now safe to add ManyToMany relationships (instance is saved)</span>
+        <span class="c1"># tags_data is a list of dicts: [{&#39;name&#39;: &#39;django&#39;}, {&#39;name&#39;: &#39;python&#39;}]</span>
         <span class="k">for</span> <span class="n">tag_data</span> <span class="ow">in</span> <span class="n">tags_data</span><span class="p">:</span>
             <span class="n">tag</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">tag_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
             <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
@@ -1588,9 +1643,10 @@
         <span class="c1"># Update post fields</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="c1"># CRITICAL: Save instance before updating ManyToMany</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="c1"># Update tags if provided</span>
+        <span class="c1"># Update tags if provided (after instance is saved)</span>
         <span class="k">if</span> <span class="n">tags_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">instance</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">tag_data</span> <span class="ow">in</span> <span class="n">tags_data</span><span class="p">:</span>
@@ -1607,6 +1663,49 @@
 <li><strong>Use get_or_create()</strong> to avoid duplicate related objects</li>
 <li><strong>Handle ManyToMany</strong> relationships carefully in update()</li>
 </ol>
+<h3 id="important-manytomany-field-conflicts">Important: ManyToMany Field Conflicts<a class="headerlink" href="#important-manytomany-field-conflicts" title="Permanent link">&para;</a></h3>
+<p><strong>⚠️ Common Error</strong>: When overriding a ManyToMany field with a nested serializer using the same field name, you may encounter:</p>
+<div class="codehilite"><pre><span></span><code>AttributeError: &#39;NoneType&#39; object has no attribute &#39;_meta&#39;
+</code></pre></div>
+
+<p><strong>Solution Options</strong>:</p>
+<p><strong>Option 1: Separate Read/Write Fields (Recommended)</strong>
+Use different field names for reading (nested serializer) and writing (ID list):</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TaskSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="c1"># Read: nested serializer for display</span>
+    <span class="n">assigned_to</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Write: list of IDs for creation/update</span>
+    <span class="n">assigned_to_ids</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ListField</span><span class="p">(</span>
+        <span class="n">child</span><span class="o">=</span><span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(),</span>
+        <span class="n">write_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="n">assigned_to_ids</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;assigned_to_ids&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">assigned_to_ids</span><span class="p">:</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">assigned_to</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">assigned_to_ids</span><span class="p">)</span>  <span class="c1"># Set after creation</span>
+        <span class="k">return</span> <span class="n">task</span>
+</code></pre></div>
+
+<p><strong>Option 2: Nested Serializer (Use with Caution)</strong>
+If using the same field name, ensure the instance is saved before accessing ManyToMany:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">TagSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Same name as model field</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="n">tags_data</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="c1"># CRITICAL: Create instance first, then add ManyToMany relationships</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+        <span class="c1"># Now safe to add ManyToMany relationships</span>
+        <span class="k">for</span> <span class="n">tag_data</span> <span class="ow">in</span> <span class="n">tags_data</span><span class="p">:</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">tag_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">post</span>
+</code></pre></div>
+
+<p><strong>Why Option 1 is Better</strong>: Avoids field name conflicts and is more explicit about read vs. write operations.</p>
 <h2 id="serializermethodfield">SerializerMethodField<a class="headerlink" href="#serializermethodfield" title="Permanent link">&para;</a></h2>
 <p>Use SerializerMethodField to add computed or custom fields.</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># api/serializers.py</span>
@@ -1673,15 +1772,18 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
         <span class="c1"># Get request user</span>
         <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Authentication required to create posts&quot;</span><span class="p">)</span>
 
         <span class="c1"># Set author to current user</span>
         <span class="n">validated_data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
 
-        <span class="c1"># Handle tags</span>
+        <span class="c1"># Handle tags - pop before creating instance</span>
         <span class="n">tags_data</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="c1"># CRITICAL: Create instance first, then add ManyToMany relationships</span>
         <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 
-        <span class="c1"># Add tags</span>
+        <span class="c1"># Now safe to add ManyToMany relationships (instance is saved)</span>
         <span class="k">for</span> <span class="n">tag_data</span> <span class="ow">in</span> <span class="n">tags_data</span><span class="p">:</span>
             <span class="n">tag</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">tag_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
             <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
@@ -1700,12 +1802,15 @@
         <span class="c1"># Handle tags</span>
         <span class="k">if</span> <span class="s1">&#39;tags&#39;</span> <span class="ow">in</span> <span class="n">validated_data</span><span class="p">:</span>
             <span class="n">tags_data</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
+            <span class="c1"># CRITICAL: Save instance before updating ManyToMany</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">instance</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">tag_data</span> <span class="ow">in</span> <span class="n">tags_data</span><span class="p">:</span>
                 <span class="n">tag</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">tag_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
                 <span class="n">instance</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-        <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">instance</span>
 </code></pre></div>
 
@@ -2031,15 +2136,17 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 
 <span class="k">class</span><span class="w"> </span><span class="nc">CommentSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">AuthorSerializer</span><span class="p">(</span><span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">author_id</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">write_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">post_id</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">write_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Comment</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
-        <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;post_id&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
+        <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">AuthorSerializer</span><span class="p">(</span><span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Custom tags field - this overrides the model&#39;s ManyToMany &#39;tags&#39; field</span>
+    <span class="c1"># DRF will use this instead of the model field, avoiding the _meta conflict</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="n">TagSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">comments</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">comment_count</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">()</span>
@@ -2056,8 +2163,13 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
         <span class="n">tags_data</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Authentication required to create posts&quot;</span><span class="p">)</span>
+        <span class="c1"># Create post first (without tags)</span>
         <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 
+        <span class="c1"># Handle tags after post is saved (ManyToMany requires saved instance)</span>
+        <span class="c1"># tags_data is a list of dicts from TagSerializer (e.g., [{&#39;name&#39;: &#39;django&#39;}, {&#39;name&#39;: &#39;python&#39;}])</span>
         <span class="k">for</span> <span class="n">tag_data</span> <span class="ow">in</span> <span class="n">tags_data</span><span class="p">:</span>
             <span class="n">tag</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">tag_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
             <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
@@ -2116,7 +2228,8 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
         <span class="k">return</span> <span class="n">queryset</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">perform_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
-        <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">post_id</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;post_id&#39;</span><span class="p">)</span>
+        <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">post_id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">TagViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -2162,9 +2275,8 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">    &quot;post&quot;: 1,</span>
-<span class="s1">    &quot;content&quot;: &quot;Great post!&quot;,</span>
-<span class="s1">    &quot;author_id&quot;: 1</span>
+<span class="s1">    &quot;post_id&quot;: 1,</span>
+<span class="s1">    &quot;content&quot;: &quot;Great post!&quot;</span>
 <span class="s1">  }&#39;</span>
 </code></pre></div>
 
@@ -2253,9 +2365,19 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
         <span class="n">assigned_to_ids</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;assigned_to_ids&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">category_id</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Authentication required to create tasks&quot;</span><span class="p">)</span>
+        <span class="c1"># Create task first (without ManyToMany relationships)</span>
         <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 
+        <span class="c1"># Set ForeignKey after creation if needed</span>
+        <span class="k">if</span> <span class="n">category_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">category_id</span> <span class="o">=</span> <span class="n">category_id</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Set ManyToMany relationships after instance is saved</span>
         <span class="k">if</span> <span class="n">assigned_to_ids</span><span class="p">:</span>
             <span class="n">task</span><span class="o">.</span><span class="n">assigned_to</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">assigned_to_ids</span><span class="p">)</span>
 
@@ -2263,15 +2385,23 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
         <span class="n">assigned_to_ids</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;assigned_to_ids&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">category_id</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
+        <span class="c1"># Update simple fields</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">desc</span><span class="p">)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">completed</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">completed</span><span class="p">)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;priority&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">priority</span><span class="p">)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;due_date&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">due_date</span><span class="p">)</span>
-        <span class="n">instance</span><span class="o">.</span><span class="n">category_id</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">category_id</span><span class="p">)</span>
+
+        <span class="c1"># Update ForeignKey if provided</span>
+        <span class="k">if</span> <span class="n">category_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">category_id</span> <span class="o">=</span> <span class="n">category_id</span>
+
+        <span class="c1"># Save instance before updating ManyToMany</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
+        <span class="c1"># Update ManyToMany relationships after save</span>
         <span class="k">if</span> <span class="n">assigned_to_ids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">instance</span><span class="o">.</span><span class="n">assigned_to</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">assigned_to_ids</span><span class="p">)</span>
 
