@@ -4,6 +4,28 @@
 
 Build APIs with nested, related data and business logic. Master model relationships, nested serializers, query optimization, and background tasks. By the end of this level, you'll be able to build complex, efficient APIs.
 
+## Note on Examples
+
+This guide uses **two different API examples** to demonstrate different relationship patterns and advanced concepts:
+
+- **Blog API (Post/Comment/Tag)**: Used in concept explanations and the main step-by-step section to demonstrate:
+  - Complex relationships (ForeignKey, ManyToMany)
+  - Nested serializers with multiple related models
+  - Query optimization across relationships
+  - Real-world content management patterns
+  
+- **Enhanced Task API**: Used in a separate step-by-step section to show:
+  - How to extend the Task API from Level 2 with relationships
+  - Adding categories, priorities, and assigned users
+  - Building on previous knowledge incrementally
+  - Practical task management features
+
+**Why two examples?**
+- **Blog API** is ideal for demonstrating complex relationships (posts have comments, tags, authors)
+- **Enhanced Task API** builds on Level 2's Task API, showing progression
+- Different examples help you understand patterns that apply to any model
+- You can apply all concepts to your own projects (Task, Book, Product, Post, etc.)
+
 ## Table of Contents
 
 1. [Model Relationships](#model-relationships)
@@ -174,13 +196,17 @@ class PostSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
 
     def create(self, validated_data):
-        validated_data.pop('author_id', None)
+        author_id = validated_data.pop('author_id', None)
+        if author_id:
+            validated_data['author_id'] = author_id
         return Post.objects.create(**validated_data)
 ```
 
 ### Writable Nested Serializer
 
 Allow creating/updating related objects through the parent.
+
+**⚠️ Important**: When using nested serializers with ManyToMany fields, ensure the instance is saved before accessing ManyToMany relationships to avoid `AttributeError: 'NoneType' object has no attribute '_meta'`.
 
 ```python
 # api/serializers.py
@@ -196,6 +222,7 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
 
 class PostSerializer(serializers.ModelSerializer):
+    # Overriding model's ManyToMany 'tags' field with nested serializer
     tags = TagSerializer(many=True, required=False)
     comments = CommentSerializer(many=True, read_only=True)
 
@@ -206,9 +233,15 @@ class PostSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         tags_data = validated_data.pop('tags', [])
-        post = Post.objects.create(**validated_data)
+        request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            raise serializers.ValidationError("Authentication required to create posts")
+        # CRITICAL: Create instance first, then add ManyToMany relationships
+        # Author is read-only, so set it from request
+        post = Post.objects.create(author=request.user, **validated_data)
         
-        # Create or get tags
+        # Now safe to add ManyToMany relationships (instance is saved)
+        # tags_data is a list of dicts: [{'name': 'django'}, {'name': 'python'}]
         for tag_data in tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             post.tags.add(tag)
@@ -221,9 +254,10 @@ class PostSerializer(serializers.ModelSerializer):
         # Update post fields
         instance.title = validated_data.get('title', instance.title)
         instance.content = validated_data.get('content', instance.content)
+        # CRITICAL: Save instance before updating ManyToMany
         instance.save()
         
-        # Update tags if provided
+        # Update tags if provided (after instance is saved)
         if tags_data is not None:
             instance.tags.clear()
             for tag_data in tags_data:
@@ -239,6 +273,57 @@ class PostSerializer(serializers.ModelSerializer):
 2. **Override create() and update()** for writable nested serializers
 3. **Use get_or_create()** to avoid duplicate related objects
 4. **Handle ManyToMany** relationships carefully in update()
+
+### Important: ManyToMany Field Conflicts
+
+**⚠️ Common Error**: When overriding a ManyToMany field with a nested serializer using the same field name, you may encounter:
+```
+AttributeError: 'NoneType' object has no attribute '_meta'
+```
+
+**Solution Options**:
+
+**Option 1: Separate Read/Write Fields (Recommended)**
+Use different field names for reading (nested serializer) and writing (ID list):
+
+```python
+class TaskSerializer(serializers.ModelSerializer):
+    # Read: nested serializer for display
+    assigned_to = UserSerializer(many=True, read_only=True)
+    # Write: list of IDs for creation/update
+    assigned_to_ids = serializers.ListField(
+        child=serializers.IntegerField(),
+        write_only=True,
+        required=False
+    )
+    
+    def create(self, validated_data):
+        assigned_to_ids = validated_data.pop('assigned_to_ids', [])
+        task = Task.objects.create(**validated_data)
+        if assigned_to_ids:
+            task.assigned_to.set(assigned_to_ids)  # Set after creation
+        return task
+```
+
+**Option 2: Nested Serializer (Use with Caution)**
+If using the same field name, ensure the instance is saved before accessing ManyToMany:
+
+```python
+class PostSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True, required=False)  # Same name as model field
+    
+    def create(self, validated_data):
+        tags_data = validated_data.pop('tags', [])
+        # CRITICAL: Create instance first, then add ManyToMany relationships
+        post = Post.objects.create(**validated_data)
+        # Now safe to add ManyToMany relationships
+        for tag_data in tags_data:
+            tag, created = Tag.objects.get_or_create(name=tag_data['name'])
+            post.tags.add(tag)
+        return post
+```
+
+**Why Option 1 is Better**: Avoids field name conflicts and is more explicit about read vs. write operations.
 
 ## SerializerMethodField
 
@@ -318,15 +403,18 @@ class PostSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Get request user
         request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            raise serializers.ValidationError("Authentication required to create posts")
         
         # Set author to current user
         validated_data['author'] = request.user
         
-        # Handle tags
+        # Handle tags - pop before creating instance
         tags_data = validated_data.pop('tags', [])
+        # CRITICAL: Create instance first, then add ManyToMany relationships
         post = Post.objects.create(**validated_data)
         
-        # Add tags
+        # Now safe to add ManyToMany relationships (instance is saved)
         for tag_data in tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             post.tags.add(tag)
@@ -347,12 +435,15 @@ class PostSerializer(serializers.ModelSerializer):
         # Handle tags
         if 'tags' in validated_data:
             tags_data = validated_data.pop('tags')
+            # CRITICAL: Save instance before updating ManyToMany
+            instance.save()
             instance.tags.clear()
             for tag_data in tags_data:
                 tag, created = Tag.objects.get_or_create(name=tag_data['name'])
                 instance.tags.add(tag)
+        else:
+            instance.save()
         
-        instance.save()
         return instance
 ```
 
@@ -736,15 +827,17 @@ class TagSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
-    author_id = serializers.IntegerField(write_only=True)
+    post_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Comment
-        fields = ['id', 'content', 'author', 'author_id', 'created_at']
-        read_only_fields = ['id', 'created_at']
+        fields = ['id', 'content', 'post_id', 'author', 'created_at']
+        read_only_fields = ['id', 'author', 'created_at']
 
 class PostSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
+    # Custom tags field - this overrides the model's ManyToMany 'tags' field
+    # DRF will use this instead of the model field, avoiding the _meta conflict
     tags = TagSerializer(many=True, required=False)
     comments = CommentSerializer(many=True, read_only=True)
     comment_count = serializers.SerializerMethodField()
@@ -761,8 +854,13 @@ class PostSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tags_data = validated_data.pop('tags', [])
         request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            raise serializers.ValidationError("Authentication required to create posts")
+        # Create post first (without tags)
         post = Post.objects.create(author=request.user, **validated_data)
         
+        # Handle tags after post is saved (ManyToMany requires saved instance)
+        # tags_data is a list of dicts from TagSerializer (e.g., [{'name': 'django'}, {'name': 'python'}])
         for tag_data in tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             post.tags.add(tag)
@@ -823,7 +921,8 @@ class CommentViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        post_id = serializer.validated_data.get('post_id')
+        serializer.save(author=self.request.user, post_id=post_id)
 
 class TagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
@@ -873,9 +972,8 @@ curl -X POST http://localhost:8000/api/comments/ \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TOKEN" \
   -d '{
-    "post": 1,
-    "content": "Great post!",
-    "author_id": 1
+    "post_id": 1,
+    "content": "Great post!"
   }'
 ```
 
@@ -970,9 +1068,19 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         assigned_to_ids = validated_data.pop('assigned_to_ids', [])
+        category_id = validated_data.pop('category_id', None)
         request = self.context.get('request')
+        if not request or not request.user.is_authenticated:
+            raise serializers.ValidationError("Authentication required to create tasks")
+        # Create task first (without ManyToMany relationships)
         task = Task.objects.create(owner=request.user, **validated_data)
         
+        # Set ForeignKey after creation if needed
+        if category_id is not None:
+            task.category_id = category_id
+            task.save()
+        
+        # Set ManyToMany relationships after instance is saved
         if assigned_to_ids:
             task.assigned_to.set(assigned_to_ids)
         
@@ -980,15 +1088,23 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         assigned_to_ids = validated_data.pop('assigned_to_ids', None)
+        category_id = validated_data.pop('category_id', None)
         
+        # Update simple fields
         instance.title = validated_data.get('title', instance.title)
         instance.desc = validated_data.get('desc', instance.desc)
         instance.completed = validated_data.get('completed', instance.completed)
         instance.priority = validated_data.get('priority', instance.priority)
         instance.due_date = validated_data.get('due_date', instance.due_date)
-        instance.category_id = validated_data.get('category_id', instance.category_id)
+        
+        # Update ForeignKey if provided
+        if category_id is not None:
+            instance.category_id = category_id
+        
+        # Save instance before updating ManyToMany
         instance.save()
         
+        # Update ManyToMany relationships after save
         if assigned_to_ids is not None:
             instance.assigned_to.set(assigned_to_ids)
         
