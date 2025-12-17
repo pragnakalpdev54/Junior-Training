@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://pragnakalpdev54.github.io/DRF/LEVEL_3_ADVANCED.html">
+        <link rel="canonical" href="https://pragnakalpdev54.github.io/DRF/LEVEL_3B_ADVANCED.html">
       
       
-        <link rel="prev" href="LEVEL_2_INTERMEDIATE.html">
-      
-      
-        <link rel="next" href="LEVEL_4_SCALABLE.html">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>Level 3 - Advanced - DRF Training Guide</title>
+        <title>Level 3B: Advanced - Serializers & Advanced Patterns - DRF Training Guide</title>
       
     
     
@@ -66,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#level-3-advanced-relationships-serializers-and-complex-logic" class="md-skip">
+        <a href="#level-3b-advanced-serializers-advanced-patterns" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Level 3 - Advanced
+              Level 3B: Advanced - Serializers &amp; Advanced Patterns
             
           </span>
         </div>
@@ -224,8 +220,6 @@
       
   
   
-    
-  
   
   
     
@@ -238,11 +232,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -263,7 +259,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -337,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_2_INTERMEDIATE.html" class="md-nav__link">
+      <a href="LEVEL_2_INTERMEDIATE.md" class="md-nav__link">
         
   
   
@@ -362,37 +358,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 3 - Advanced
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="LEVEL_3_ADVANCED.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="LEVEL_3_ADVANCED.md" class="md-nav__link">
         
   
   
@@ -408,814 +377,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#note-on-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Note on Examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Table of Contents
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-relationships" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Relationships
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Model Relationships">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#foreignkey-many-to-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ForeignKey (Many-to-One)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#onetoonefield-one-to-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OneToOneField (One-to-One)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manytomanyfield-many-to-many" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ManyToManyField (Many-to-Many)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#related-managers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related Managers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#on_delete-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        on_delete Options
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nested-serializers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nested Serializers
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Nested Serializers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#read-only-nested-serializer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Read-Only Nested Serializer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#writable-nested-serializer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Writable Nested Serializer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nested-serializer-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nested Serializer Best Practices
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#important-manytomany-field-conflicts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Important: ManyToMany Field Conflicts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#serializermethodfield" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SerializerMethodField
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-serializer-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Serializer Fields
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom Serializer Fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-custom-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Custom Fields
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-field-with-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Field with Validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#overriding-serializer-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overriding Serializer Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Overriding Serializer Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#override-create" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Override create()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#override-update" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Override update()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#override-to_representation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Override to_representation()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Validation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#field-level-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field-Level Validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#object-level-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Object-Level Validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-validators" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Validators
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#query-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Query Optimization
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Query Optimization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-n1-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The N+1 Problem
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#select_related-foreignkey-onetoone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        select_related (ForeignKey, OneToOne)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prefetch_related-manytomany-reverse-foreignkey" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        prefetch_related (ManyToMany, Reverse ForeignKey)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#combined-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Combined Optimization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#only-and-defer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        only() and defer()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#annotate-and-aggregate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        annotate() and aggregate()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-in-views" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using in Views
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#django-signals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Django Signals
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Django Signals">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-are-signals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What are Signals?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#common-signals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Signals
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-signals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Register Signals
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#background-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Background Tasks
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Background Tasks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-1-celery-production" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option 1: Celery (Production)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-2-django-q-simpler-alternative" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option 2: Django-Q (Simpler Alternative)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-by-step-blog-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step-by-Step: Blog API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step-by-Step: Blog API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Create Models
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-serializers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create Serializers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-create-viewsets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Create ViewSets
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-urls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4: Configure URLs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-test-blog-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5: Test Blog API
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-by-step-enhanced-task-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step-by-Step: Enhanced Task API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step-by-Step: Enhanced Task API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-update-task-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Update Task Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-serializers_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create Serializers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-update-viewset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Update ViewSet
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#soft-delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Soft Delete
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Soft Delete">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#implement-soft-delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implement Soft Delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-query-patterns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced Query Patterns
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced Query Patterns">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#complex-filtering" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Complex Filtering
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercises" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercises
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exercises">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exercise-1-complete-blog-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 1: Complete Blog API
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exercise-2-enhanced-task-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 2: Enhanced Task API
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exercise-3-signals-and-background-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 3: Signals and Background Tasks
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-ons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add-ons
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Add-ons">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#add-on-1-custom-manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add-on 1: Custom Manager
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-on-2-advanced-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add-on 2: Advanced Validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-on-3-serializer-context" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add-on 3: Serializer Context
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1418,179 +579,70 @@
 
 
 
-<h1 id="level-3-advanced-relationships-serializers-and-complex-logic">Level 3: Advanced - Relationships, Serializers, and Complex Logic<a class="headerlink" href="#level-3-advanced-relationships-serializers-and-complex-logic" title="Permanent link">&para;</a></h1>
+<h1 id="level-3b-advanced-serializers-advanced-patterns">Level 3B: Advanced - Serializers &amp; Advanced Patterns<a class="headerlink" href="#level-3b-advanced-serializers-advanced-patterns" title="Permanent link">&para;</a></h1>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
-<p>Build APIs with nested, related data and business logic. Master model relationships, nested serializers, query optimization, and background tasks. By the end of this level, you'll be able to build complex, efficient APIs.</p>
+<p>Build APIs with advanced serializers, custom validation, Django signals, and background tasks. Master nested serializers, custom serializer fields, validation logic, signals, and asynchronous task processing. By the end of this level, you'll be able to build complex APIs with sophisticated data handling and background processing.</p>
 <h2 id="note-on-examples">Note on Examples<a class="headerlink" href="#note-on-examples" title="Permanent link">&para;</a></h2>
-<p>This guide uses <strong>two different API examples</strong> to demonstrate different relationship patterns and advanced concepts:</p>
-<ul>
-<li><strong>Blog API (Post/Comment/Tag)</strong>: Used in concept explanations and the main step-by-step section to demonstrate:</li>
-<li>Complex relationships (ForeignKey, ManyToMany)</li>
-<li>Nested serializers with multiple related models</li>
-<li>Query optimization across relationships</li>
-<li>
-<p>Real-world content management patterns</p>
-</li>
-<li>
-<p><strong>Enhanced Task API</strong>: Used in a separate step-by-step section to show:</p>
-</li>
-<li>How to extend the Task API from Level 2 with relationships</li>
-<li>Adding categories, priorities, and assigned users</li>
-<li>Building on previous knowledge incrementally</li>
-<li>Practical task management features</li>
-</ul>
-<p><strong>Why two examples?</strong>
-- <strong>Blog API</strong> is ideal for demonstrating complex relationships (posts have comments, tags, authors)
-- <strong>Enhanced Task API</strong> builds on Level 2's Task API, showing progression
-- Different examples help you understand patterns that apply to any model
-- You can apply all concepts to your own projects (Task, Book, Product, Post, etc.)</p>
+<p>This guide uses <strong>Blog API (Post/Comment/Tag)</strong> and <strong>Enhanced Task API</strong> as examples to demonstrate advanced serializer patterns, validation, signals, and background tasks. The concepts apply to any model and API.</p>
+<p><strong>Prerequisites</strong>: Complete <a href="LEVEL_3A_ADVANCED.html">Level 3A</a> first to understand model relationships and query optimization.</p>
 <h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ol>
-<li><a href="#model-relationships">Model Relationships</a></li>
 <li><a href="#nested-serializers">Nested Serializers</a></li>
 <li><a href="#serializermethodfield">SerializerMethodField</a></li>
 <li><a href="#custom-serializer-fields">Custom Serializer Fields</a></li>
 <li><a href="#overriding-serializer-methods">Overriding Serializer Methods</a></li>
 <li><a href="#validation">Validation</a></li>
-<li><a href="#query-optimization">Query Optimization</a></li>
 <li><a href="#django-signals">Django Signals</a></li>
 <li><a href="#background-tasks">Background Tasks</a></li>
 <li><a href="#step-by-step-blog-api">Step-by-Step: Blog API</a></li>
 <li><a href="#step-by-step-enhanced-task-api">Step-by-Step: Enhanced Task API</a></li>
 <li><a href="#soft-delete">Soft Delete</a></li>
-<li><a href="#advanced-query-patterns">Advanced Query Patterns</a></li>
 <li><a href="#exercises">Exercises</a></li>
+<li><a href="#common-errors-and-solutions">Common Errors and Solutions</a></li>
 <li><a href="#add-ons">Add-ons</a></li>
 </ol>
-<h2 id="model-relationships">Model Relationships<a class="headerlink" href="#model-relationships" title="Permanent link">&para;</a></h2>
-<h3 id="foreignkey-many-to-one">ForeignKey (Many-to-One)<a class="headerlink" href="#foreignkey-many-to-one" title="Permanent link">&para;</a></h3>
-<p>One model references another. Example: Many Posts belong to One User.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;posts&#39;</span><span class="p">)</span>
-    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
-</code></pre></div>
-
-<p><strong>Access patterns:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Get all posts by a user</span>
-<span class="n">user</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-
-<span class="c1"># Get author of a post</span>
-<span class="n">post</span><span class="o">.</span><span class="n">author</span>
-</code></pre></div>
-
-<h3 id="onetoonefield-one-to-one">OneToOneField (One-to-One)<a class="headerlink" href="#onetoonefield-one-to-one" title="Permanent link">&para;</a></h3>
-<p>One-to-one relationship. Example: One User has One Profile.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">UserProfile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span>
-    <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">phone_number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-
-<p><strong>Access patterns:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Get user&#39;s profile</span>
-<span class="n">user</span><span class="o">.</span><span class="n">profile</span>
-
-<span class="c1"># Get profile&#39;s user</span>
-<span class="n">profile</span><span class="o">.</span><span class="n">user</span>
-</code></pre></div>
-
-<h3 id="manytomanyfield-many-to-many">ManyToManyField (Many-to-Many)<a class="headerlink" href="#manytomanyfield-many-to-many" title="Permanent link">&para;</a></h3>
-<p>Many-to-many relationship. Example: Posts can have many Tags, Tags can be on many Posts.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;posts&#39;</span><span class="p">)</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-
-<p><strong>Access patterns:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Add tag to post</span>
-<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-
-<span class="c1"># Get all tags for a post</span>
-<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-
-<span class="c1"># Get all posts with a tag</span>
-<span class="n">tag</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-
-<span class="c1"># Remove tag</span>
-<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-
-<span class="c1"># Clear all tags</span>
-<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</code></pre></div>
-
-<h3 id="related-managers">Related Managers<a class="headerlink" href="#related-managers" title="Permanent link">&para;</a></h3>
-<p>Django automatically creates related managers for relationships:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># ForeignKey creates reverse manager</span>
-<span class="n">user</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># All posts by user</span>
-<span class="n">user</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">title__icontains</span><span class="o">=</span><span class="s1">&#39;django&#39;</span><span class="p">)</span>
-
-<span class="c1"># ManyToMany creates manager</span>
-<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag1</span><span class="p">,</span> <span class="n">tag2</span><span class="p">)</span>
-</code></pre></div>
-
-<h3 id="on_delete-options">on_delete Options<a class="headerlink" href="#on_delete-options" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># CASCADE: Delete related objects</span>
-<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
-
-<span class="c1"># PROTECT: Prevent deletion if related objects exist</span>
-<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PROTECT</span><span class="p">)</span>
-
-<span class="c1"># SET_NULL: Set to NULL (requires null=True)</span>
-<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># SET_DEFAULT: Set to default value</span>
-<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_DEFAULT</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># DO_NOTHING: Do nothing (not recommended)</span>
-<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">DO_NOTHING</span><span class="p">)</span>
-</code></pre></div>
-
 <h2 id="nested-serializers">Nested Serializers<a class="headerlink" href="#nested-serializers" title="Permanent link">&para;</a></h2>
 <h3 id="read-only-nested-serializer">Read-Only Nested Serializer<a class="headerlink" href="#read-only-nested-serializer" title="Permanent link">&para;</a></h3>
 <p>Display related data but don't allow creation/update through nested data.</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># api/serializers.py</span>
+<span class="c1"># Import DRF serializers</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
+<span class="c1"># Import models</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Post</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">Tag</span>
 
+<span class="c1"># Nested serializer for author (User model)</span>
+<span class="c1"># This serializer is used INSIDE PostSerializer to show author details</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">AuthorSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="c1"># Fields to include when serializing author</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
 
+<span class="c1"># Main serializer for Post</span>
+<span class="c1"># Uses nested AuthorSerializer to include author details in response</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="c1"># Nested serializer: Shows full author object in response (read-only)</span>
+    <span class="c1"># read_only=True = Can&#39;t create/update author through this field</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">AuthorSerializer</span><span class="p">(</span><span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Separate field for writing (creating/updating posts)</span>
+    <span class="c1"># write_only=True = Not included in response, only for input</span>
+    <span class="c1"># Client sends author_id (integer), not full author object</span>
     <span class="n">author_id</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">write_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
+        <span class="c1"># Include both author (nested object) and author_id (for writing)</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
+        <span class="c1"># These fields are automatically set, can&#39;t be changed by client</span>
         <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="c1"># Extract author_id from validated data</span>
+        <span class="c1"># pop() removes it from validated_data (we&#39;ll set it differently)</span>
         <span class="n">author_id</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">author_id</span><span class="p">:</span>
+            <span class="c1"># Set author_id directly (ForeignKey field)</span>
             <span class="n">validated_data</span><span class="p">[</span><span class="s1">&#39;author_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">author_id</span>
         <span class="k">return</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
 </code></pre></div>
@@ -1876,114 +928,79 @@ If using the same field name, ensure the instance is saved before accessing Many
     <span class="c1"># ...</span>
 </code></pre></div>
 
-<h2 id="query-optimization">Query Optimization<a class="headerlink" href="#query-optimization" title="Permanent link">&para;</a></h2>
-<h3 id="the-n1-problem">The N+1 Problem<a class="headerlink" href="#the-n1-problem" title="Permanent link">&para;</a></h3>
-<p><strong>Problem</strong>: Making multiple database queries when one would suffice.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: N+1 queries</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>  <span class="c1"># One query per post!</span>
-</code></pre></div>
-
-<p><strong>Solution</strong>: Use <code>select_related</code> and <code>prefetch_related</code>.</p>
-<h3 id="select_related-foreignkey-onetoone">select_related (ForeignKey, OneToOne)<a class="headerlink" href="#select_related-foreignkey-onetoone" title="Permanent link">&para;</a></h3>
-<p>Follows foreign key relationships and fetches related objects in a single query.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># GOOD: Single query</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>  <span class="c1"># No additional queries!</span>
-</code></pre></div>
-
-<h3 id="prefetch_related-manytomany-reverse-foreignkey">prefetch_related (ManyToMany, Reverse ForeignKey)<a class="headerlink" href="#prefetch_related-manytomany-reverse-foreignkey" title="Permanent link">&para;</a></h3>
-<p>Prefetches related objects in a separate query.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: Multiple queries</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>  <span class="c1"># One query per post!</span>
-
-<span class="c1"># GOOD: Two queries total</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>  <span class="c1"># No additional queries!</span>
-</code></pre></div>
-
-<h3 id="combined-optimization">Combined Optimization<a class="headerlink" href="#combined-optimization" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Optimize multiple relationships</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-
-<span class="c1"># With filtering</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">author__is_active</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</code></pre></div>
-
-<h3 id="only-and-defer">only() and defer()<a class="headerlink" href="#only-and-defer" title="Permanent link">&para;</a></h3>
-<p>Fetch only needed fields.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Fetch only specific fields</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-
-<span class="c1"># Defer heavy fields</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">defer</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Don&#39;t fetch content field</span>
-</code></pre></div>
-
-<h3 id="annotate-and-aggregate">annotate() and aggregate()<a class="headerlink" href="#annotate-and-aggregate" title="Permanent link">&para;</a></h3>
-<p>Add computed fields and aggregations.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Avg</span>
-
-<span class="c1"># Add comment count to each post</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">comment_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-
-<span class="c1"># Get average comment count</span>
-<span class="n">avg_comments</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">avg_comments</span><span class="o">=</span><span class="n">Avg</span><span class="p">(</span><span class="s1">&#39;comments__id&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-<h3 id="using-in-views">Using in Views<a class="headerlink" href="#using-in-views" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># api/views.py</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">PostViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span>
-            <span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="s1">&#39;comments__author&#39;</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">comment_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</code></pre></div>
-
 <h2 id="django-signals">Django Signals<a class="headerlink" href="#django-signals" title="Permanent link">&para;</a></h2>
 <h3 id="what-are-signals">What are Signals?<a class="headerlink" href="#what-are-signals" title="Permanent link">&para;</a></h3>
 <p>Signals allow decoupled applications to get notified when certain actions occur.</p>
 <h3 id="common-signals">Common Signals<a class="headerlink" href="#common-signals" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># api/signals.py</span>
+<span class="c1"># Import Django signals (pre_save, post_save, etc.)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">pre_save</span><span class="p">,</span> <span class="n">post_save</span><span class="p">,</span> <span class="n">pre_delete</span><span class="p">,</span> <span class="n">post_delete</span>
+<span class="c1"># Import receiver decorator to connect signal handlers</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span>
+<span class="c1"># Import slugify to convert text to URL-friendly slugs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.utils.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">slugify</span>
+<span class="c1"># Import models</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Post</span>
 
+<span class="c1"># Connect signal handler to pre_save signal for Post model</span>
+<span class="c1"># pre_save = Called before object is saved to database</span>
 <span class="nd">@receiver</span><span class="p">(</span><span class="n">pre_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Post</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">pre_save_post</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Called before Post is saved&quot;&quot;&quot;</span>
+    <span class="c1"># Auto-generate slug from title if slug is not provided</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">instance</span><span class="o">.</span><span class="n">slug</span><span class="p">:</span>
+        <span class="c1"># slugify() converts &quot;Hello World&quot; to &quot;hello-world&quot; (URL-friendly)</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 
+<span class="c1"># Connect signal handler to post_save signal for Post model</span>
+<span class="c1"># post_save = Called after object is saved to database</span>
 <span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Post</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">post_save_post</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called after Post is saved&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Called after Post is saved.</span>
+<span class="sd">    created = True if this is a new object, False if it&#39;s an update</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+        <span class="c1"># This is a new post (not an update)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New post created: </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="c1"># Send notification, update cache, etc.</span>
+        <span class="c1"># Common use cases:</span>
+        <span class="c1"># - Send notification email</span>
+        <span class="c1"># - Update search index</span>
+        <span class="c1"># - Update cache</span>
+        <span class="c1"># - Trigger background tasks</span>
 
+<span class="c1"># Connect signal handler to pre_delete signal for Post model</span>
+<span class="c1"># pre_delete = Called before object is deleted from database</span>
 <span class="nd">@receiver</span><span class="p">(</span><span class="n">pre_delete</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Post</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">pre_delete_post</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called before Post is deleted&quot;&quot;&quot;</span>
-    <span class="c1"># Backup, logging, etc.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Called before Post is deleted.</span>
+<span class="sd">    Use this for cleanup, backups, logging, etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Common use cases:</span>
+    <span class="c1"># - Backup data before deletion</span>
+    <span class="c1"># - Log deletion for audit trail</span>
+    <span class="c1"># - Clean up related files</span>
+    <span class="c1"># - Send notification</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post being deleted: </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="register-signals">Register Signals<a class="headerlink" href="#register-signals" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># api/apps.py</span>
+<span class="c1"># Import AppConfig to configure the app</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">django.apps</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppConfig</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ApiConfig</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">):</span>
+    <span class="c1"># Use BigAutoField as default primary key (Django 3.2+)</span>
     <span class="n">default_auto_field</span> <span class="o">=</span> <span class="s1">&#39;django.db.models.BigAutoField&#39;</span>
+    <span class="c1"># App name</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;api&#39;</span>
 
+    <span class="c1"># ready() is called when Django starts</span>
+    <span class="c1"># This is where you should import signals</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Import signals module to register signal handlers</span>
+        <span class="c1"># This ensures signals are connected when Django starts</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">api.signals</span>  <span class="c1"># Import signals</span>
 </code></pre></div>
 
@@ -2464,86 +1481,148 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-created_at&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<h2 id="advanced-query-patterns">Advanced Query Patterns<a class="headerlink" href="#advanced-query-patterns" title="Permanent link">&para;</a></h2>
-<h3 id="complex-filtering">Complex Filtering<a class="headerlink" href="#complex-filtering" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Q</span><span class="p">,</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Avg</span>
-
-<span class="c1"># OR conditions</span>
-<span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">Q</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="n">due_date__lt</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
-<span class="p">)</span>
-
-<span class="c1"># AND conditions</span>
-<span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">Q</span><span class="p">(</span><span class="n">completed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Q</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1"># Exclude</span>
-<span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">completed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Annotate with related count</span>
-<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
-    <span class="n">comment_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">),</span>
-    <span class="n">tag_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">comment_count__gte</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div>
-
 <h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
-<h3 id="exercise-1-complete-blog-api">Exercise 1: Complete Blog API<a class="headerlink" href="#exercise-1-complete-blog-api" title="Permanent link">&para;</a></h3>
+<h3 id="exercise-1-nested-serializers">Exercise 1: Nested Serializers<a class="headerlink" href="#exercise-1-nested-serializers" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Create Post, Comment, Tag models with relationships</li>
-<li>Create nested serializers</li>
-<li>Implement query optimization</li>
-<li>Add filtering and search</li>
-<li>Test all endpoints</li>
+<li>Create Post and Comment models with ForeignKey relationship</li>
+<li>Create nested CommentSerializer inside PostSerializer</li>
+<li>Allow creating comments through nested serializer</li>
+<li>Test nested serialization with cURL</li>
 </ol>
-<h3 id="exercise-2-enhanced-task-api">Exercise 2: Enhanced Task API<a class="headerlink" href="#exercise-2-enhanced-task-api" title="Permanent link">&para;</a></h3>
+<h3 id="exercise-2-custom-validation">Exercise 2: Custom Validation<a class="headerlink" href="#exercise-2-custom-validation" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Add Category and User relationships</li>
-<li>Implement ManyToMany for assigned users</li>
-<li>Add computed fields (is_overdue)</li>
-<li>Optimize queries</li>
-<li>Test with cURL</li>
+<li>Create custom validation method in TaskSerializer</li>
+<li>Validate that due_date is in the future</li>
+<li>Validate that priority is one of allowed values</li>
+<li>Test validation with invalid data</li>
 </ol>
-<h3 id="exercise-3-signals-and-background-tasks">Exercise 3: Signals and Background Tasks<a class="headerlink" href="#exercise-3-signals-and-background-tasks" title="Permanent link">&para;</a></h3>
+<h3 id="exercise-3-django-signals">Exercise 3: Django Signals<a class="headerlink" href="#exercise-3-django-signals" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Add signals for post creation</li>
-<li>Implement email notification task</li>
-<li>Test signal triggers</li>
+<li>Create pre_save signal to auto-generate slug from title</li>
+<li>Create post_save signal to send email notification</li>
+<li>Register signals in apps.py</li>
+<li>Test signals by creating/updating posts</li>
 </ol>
-<h2 id="add-ons">Add-ons<a class="headerlink" href="#add-ons" title="Permanent link">&para;</a></h2>
-<h3 id="add-on-1-custom-manager">Add-on 1: Custom Manager<a class="headerlink" href="#add-on-1-custom-manager" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">PublishedPostManager</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="c1"># ... fields ...</span>
-    <span class="n">objects</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span>
-    <span class="n">published</span> <span class="o">=</span> <span class="n">PublishedPostManager</span><span class="p">()</span>
+<h3 id="exercise-4-background-tasks">Exercise 4: Background Tasks<a class="headerlink" href="#exercise-4-background-tasks" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Install and configure Celery</li>
+<li>Create background task to send email</li>
+<li>Trigger task from post_save signal</li>
+<li>Monitor task execution</li>
+</ol>
+<h2 id="common-errors-and-solutions">Common Errors and Solutions<a class="headerlink" href="#common-errors-and-solutions" title="Permanent link">&para;</a></h2>
+<h3 id="error-1-nameerror-name-slugify-is-not-defined">Error 1: <code>NameError: name 'slugify' is not defined</code><a class="headerlink" href="#error-1-nameerror-name-slugify-is-not-defined" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">NameError</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="s1">&#39;slugify&#39;</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">defined</span>
 </code></pre></div>
 
-<h3 id="add-on-2-advanced-validation">Add-on 2: Advanced Validation<a class="headerlink" href="#add-on-2-advanced-validation" title="Permanent link">&para;</a></h3>
-<p>Implement complex validation rules with custom validators.</p>
-<h3 id="add-on-3-serializer-context">Add-on 3: Serializer Context<a class="headerlink" href="#add-on-3-serializer-context" title="Permanent link">&para;</a></h3>
-<p>Use context to pass request data to serializers.</p>
+<p><strong>Why This Happens</strong>:
+- Forgot to import slugify
+- Using slugify in signals without import</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># WRONG - Missing import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">pre_save</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">pre_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pre_save_post</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>  <span class="c1"># ❌ slugify not imported</span>
+
+<span class="c1"># CORRECT - Import slugify</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">pre_save</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.utils.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">slugify</span>  <span class="c1"># ✅ Import slugify</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">pre_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pre_save_post</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>  <span class="c1"># ✅ Now works</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: Always import <code>slugify</code> from <code>django.utils.text</code> when using it.</p>
+<hr />
+<h3 id="error-2-rest_frameworkexceptionsvalidationerror-invalid-data">Error 2: <code>rest_framework.exceptions.ValidationError: Invalid data</code><a class="headerlink" href="#error-2-rest_frameworkexceptionsvalidationerror-invalid-data" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:</p>
+<div class="codehilite"><pre><span></span><code>rest_framework.exceptions.ValidationError: Invalid data
+</code></pre></div>
+
+<p><strong>Why This Happens</strong>:
+- Custom validation failing
+- Validation method raising ValidationError
+- Invalid data format</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check validation method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_due_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Due date must be in the future&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="c1"># Test with valid data</span>
+<span class="c1"># Test with invalid data to see specific error message</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: 
+- Provide clear error messages in validation
+- Test validation with both valid and invalid data
+- Check serializer.is_valid() before saving</p>
+<hr />
+<h3 id="error-3-signals-not-firing">Error 3: Signals not firing<a class="headerlink" href="#error-3-signals-not-firing" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: Signal handlers not being called.</p>
+<p><strong>Why This Happens</strong>:
+- Signals not imported in apps.py
+- ready() method not calling import
+- Signal handler not registered</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/apps.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ApiConfig</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">api.signals</span>  <span class="c1"># ✅ Must import signals here</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: Always import signals in <code>apps.py</code> <code>ready()</code> method.</p>
+<hr />
+<h2 id="add-ons">Add-ons<a class="headerlink" href="#add-ons" title="Permanent link">&para;</a></h2>
+<h3 id="add-on-1-custom-serializer-field">Add-on 1: Custom Serializer Field<a class="headerlink" href="#add-on-1-custom-serializer-field" title="Permanent link">&para;</a></h3>
+<p>Create a custom serializer field for special formatting:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/serializers.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomDateField</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="add-on-2-signal-decorators">Add-on 2: Signal Decorators<a class="headerlink" href="#add-on-2-signal-decorators" title="Permanent link">&para;</a></h3>
+<p>Use signal decorators for cleaner code:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/signals.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">post_save</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Post</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_post_save</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+        <span class="c1"># Handle new post</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Congratulations! You've completed Level 3. You now know:</p>
+<p>Congratulations! You've completed Level 3B. You now know:</p>
 <ul>
-<li>✅ Model relationships (ForeignKey, OneToOne, ManyToMany)</li>
-<li>✅ Nested serializers (read-only and writable)</li>
-<li>✅ SerializerMethodField and custom fields</li>
-<li>✅ Query optimization (select_related, prefetch_related)</li>
-<li>✅ Django signals</li>
-<li>✅ Background tasks</li>
+<li>✅ Nested serializers for related data</li>
+<li>✅ Custom serializer fields and methods</li>
+<li>✅ Advanced validation</li>
+<li>✅ Django signals for decoupled logic</li>
+<li>✅ Background tasks with Celery</li>
+<li>✅ Soft delete patterns</li>
 </ul>
-<p><strong>Ready for Level 4?</strong> Continue to <a href="LEVEL_4_SCALABLE.html">Level 4: Scalable API Design</a> to learn about caching, versioning, file uploads, and async views!</p>
+<p><strong>Ready for Level 4?</strong> Continue to <a href="LEVEL_4_SCALABLE.html">Level 4: Scalable</a> to learn about caching, versioning, API documentation, and building scalable APIs!</p>
 <hr />
 <p><strong>Resources:</strong>
 - <a href="https://www.django-rest-framework.org/api-guide/serializers/">DRF Serializers</a>
-- <a href="https://docs.djangoproject.com/en/stable/topics/db/models/#relationships">Django Model Relationships</a>
-- <a href="https://docs.djangoproject.com/en/stable/topics/db/optimization/">Django Query Optimization</a>
+- <a href="https://docs.djangoproject.com/en/stable/topics/signals/">Django Signals</a>
 - <a href="https://docs.celeryproject.org/">Celery Documentation</a></p>
 
 

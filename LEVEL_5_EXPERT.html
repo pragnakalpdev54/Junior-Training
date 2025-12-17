@@ -337,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_2_INTERMEDIATE.html" class="md-nav__link">
+      <a href="LEVEL_2_INTERMEDIATE.md" class="md-nav__link">
         
   
   
@@ -365,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_3_ADVANCED.html" class="md-nav__link">
+      <a href="LEVEL_3_ADVANCED.md" class="md-nav__link">
         
   
   
@@ -485,6 +485,17 @@
     <span class="md-ellipsis">
       
         Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note-on-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note on Examples
       
     </span>
   </a>
@@ -1371,6 +1382,29 @@
 <h1 id="level-5-expert-production-performance-advanced-patterns">Level 5: Expert - Production, Performance &amp; Advanced Patterns<a class="headerlink" href="#level-5-expert-production-performance-advanced-patterns" title="Permanent link">&para;</a></h1>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
 <p>Build enterprise-grade, production-ready Django APIs. Master GraphQL, WebSockets, advanced testing, CI/CD, monitoring, and deployment. By the end of this level, you'll be able to build and deploy scalable, observable APIs.</p>
+<h2 id="note-on-examples">Note on Examples<a class="headerlink" href="#note-on-examples" title="Permanent link">&para;</a></h2>
+<p>This guide uses a <strong>mix of Task and Book API examples</strong> depending on which best illustrates each expert-level concept:</p>
+<ul>
+<li><strong>Task API</strong>: Used for:</li>
+<li>Analytics and aggregation examples (task statistics)</li>
+<li>Real-time features (WebSocket task updates)</li>
+<li>Production deployment patterns</li>
+<li>
+<p>Monitoring and observability</p>
+</li>
+<li>
+<p><strong>Book API</strong>: Used for:</p>
+</li>
+<li>GraphQL examples (book queries/mutations)</li>
+<li>Some async patterns</li>
+<li>When a simpler model better demonstrates the concept</li>
+</ul>
+<p><strong>Why mixed examples?</strong>
+- <strong>Best fit</strong>: Each example is chosen to best illustrate the specific expert concept
+- <strong>Flexibility</strong>: Shows that patterns work with any model
+- <strong>Real-world</strong>: Different APIs have different needs - this reflects reality
+- <strong>Learning</strong>: Understanding concepts with different models reinforces learning</p>
+<p><strong>Important</strong>: All expert-level patterns (GraphQL, WebSockets, CI/CD, deployment) apply to any API. The examples are just illustrations - you can use these patterns with Task, Book, Product, Post, or any other model.</p>
 <h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="#async-django">Async Django</a></li>

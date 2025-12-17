@@ -2,42 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/index.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/CURL_GUIDE.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/LEARNING_GUIDE.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_0_BEGINNER.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_1_FOUNDATIONS.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
-         <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_2_INTERMEDIATE.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_2A_INTERMEDIATE.html</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
-         <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_3_ADVANCED.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_2B_INTERMEDIATE.html</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_3A_ADVANCED.html</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_3B_ADVANCED.html</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_4_SCALABLE.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/LEVEL_5_EXPERT.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/DRF/POSTGRESQL_SETUP.html</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://pragnakalpdev54.github.io/DRF/POSTMAN_GUIDE_PART1_BASICS.html</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://pragnakalpdev54.github.io/DRF/POSTMAN_GUIDE_PART2_ADVANCED.html</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
 </urlset>

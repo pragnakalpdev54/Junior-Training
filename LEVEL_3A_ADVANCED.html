@@ -1,0 +1,1082 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pragnakalpdev54.github.io/DRF/LEVEL_3A_ADVANCED.html">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Level 3A: Advanced - Relationships & Query Optimization - DRF Training Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#level-3a-advanced-relationships-query-optimization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DRF Training Guide" class="md-header__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DRF Training Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Level 3A: Advanced - Relationships &amp; Query Optimization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DRF Training Guide" class="md-nav__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DRF Training Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Levels
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Levels
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_0_BEGINNER.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 0 - Beginner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_1_FOUNDATIONS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 - Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_2_INTERMEDIATE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 - Intermediate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_3_ADVANCED.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 - Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_4_SCALABLE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 - Scalable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_5_EXPERT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 5 - Expert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools & Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools & Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CURL_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cURL Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="POSTGRESQL_SETUP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="level-3a-advanced-relationships-query-optimization">Level 3A: Advanced - Relationships &amp; Query Optimization<a class="headerlink" href="#level-3a-advanced-relationships-query-optimization" title="Permanent link">&para;</a></h1>
+<h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
+<p>Build efficient APIs with model relationships and optimized database queries. Master ForeignKey, ManyToMany, OneToOne relationships, and learn to optimize queries to prevent N+1 problems. By the end of this level, you'll be able to build efficient APIs that handle complex relationships without performance issues.</p>
+<h2 id="note-on-examples">Note on Examples<a class="headerlink" href="#note-on-examples" title="Permanent link">&para;</a></h2>
+<p>This guide uses <strong>Blog API (Post/Comment/Tag)</strong> as the primary example to demonstrate relationship patterns and query optimization. The concepts apply to any model with relationships (Task, Book, Product, etc.).</p>
+<p><strong>Prerequisites</strong>: Complete <a href="LEVEL_2B_INTERMEDIATE.html">Level 2B</a> first to understand filtering, searching, and pagination.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#model-relationships">Model Relationships</a></li>
+<li><a href="#query-optimization">Query Optimization</a></li>
+<li><a href="#advanced-query-patterns">Advanced Query Patterns</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#common-errors-and-solutions">Common Errors and Solutions</a></li>
+<li><a href="#add-ons">Add-ons</a></li>
+</ol>
+<h2 id="model-relationships">Model Relationships<a class="headerlink" href="#model-relationships" title="Permanent link">&para;</a></h2>
+<h3 id="foreignkey-many-to-one">ForeignKey (Many-to-One)<a class="headerlink" href="#foreignkey-many-to-one" title="Permanent link">&para;</a></h3>
+<p>One model references another. Example: Many Posts belong to One User.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
+<span class="c1"># Import Django models for database models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<span class="c1"># Import User model for authentication</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+
+<span class="c1"># Post model - represents a blog post</span>
+<span class="c1"># ForeignKey relationship: Many Posts belong to One User (author)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># Post title</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="c1"># Post content (can be long text)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+
+    <span class="c1"># ForeignKey: Many-to-One relationship</span>
+    <span class="c1"># Many posts can belong to one user (author)</span>
+    <span class="c1"># on_delete=models.CASCADE = If user is deleted, delete all their posts</span>
+    <span class="c1"># related_name=&#39;posts&#39; = Access user&#39;s posts via user.posts.all()</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;posts&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Timestamp when post was created</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+</code></pre></div>
+
+<p><strong>Access patterns:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Get all posts by a user</span>
+<span class="n">user</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># Get author of a post</span>
+<span class="n">post</span><span class="o">.</span><span class="n">author</span>
+</code></pre></div>
+
+<h3 id="onetoonefield-one-to-one">OneToOneField (One-to-One)<a class="headerlink" href="#onetoonefield-one-to-one" title="Permanent link">&para;</a></h3>
+<p>One-to-one relationship. Example: One User has One Profile.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserProfile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+    <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">phone_number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Access patterns:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Get user&#39;s profile</span>
+<span class="n">user</span><span class="o">.</span><span class="n">profile</span>
+
+<span class="c1"># Get profile&#39;s user</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">user</span>
+</code></pre></div>
+
+<h3 id="manytomanyfield-many-to-many">ManyToManyField (Many-to-Many)<a class="headerlink" href="#manytomanyfield-many-to-many" title="Permanent link">&para;</a></h3>
+<p>Many-to-many relationship. Example: Posts can have many Tags, Tags can be on many Posts.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/models.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;posts&#39;</span><span class="p">)</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Access patterns:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Add tag to post</span>
+<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+
+<span class="c1"># Get all tags for a post</span>
+<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># Get all posts with a tag</span>
+<span class="n">tag</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># Remove tag</span>
+<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+
+<span class="c1"># Clear all tags</span>
+<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="related-managers">Related Managers<a class="headerlink" href="#related-managers" title="Permanent link">&para;</a></h3>
+<p>Django automatically creates related managers for relationships:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># ForeignKey creates reverse manager</span>
+<span class="n">user</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># All posts by user</span>
+<span class="n">user</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">title__icontains</span><span class="o">=</span><span class="s1">&#39;django&#39;</span><span class="p">)</span>
+
+<span class="c1"># ManyToMany creates manager</span>
+<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag1</span><span class="p">,</span> <span class="n">tag2</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="on_delete-options">on_delete Options<a class="headerlink" href="#on_delete-options" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># CASCADE: Delete related objects</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+
+<span class="c1"># PROTECT: Prevent deletion if related objects exist</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">PROTECT</span><span class="p">)</span>
+
+<span class="c1"># SET_NULL: Set to NULL (requires null=True)</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_NULL</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># SET_DEFAULT: Set to default value</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SET_DEFAULT</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># DO_NOTHING: Do nothing (not recommended)</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">DO_NOTHING</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="query-optimization">Query Optimization<a class="headerlink" href="#query-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="the-n1-problem">The N+1 Problem<a class="headerlink" href="#the-n1-problem" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: Making multiple database queries when one would suffice.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: N+1 queries problem</span>
+<span class="c1"># This makes 1 query to get all posts, then 1 query per post to get author</span>
+<span class="c1"># If you have 100 posts, this makes 101 queries! (1 + 100)</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Query 1: Get all posts</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="c1"># Query 2, 3, 4, ... N: One query per post to get author</span>
+    <span class="c1"># Each post.author access hits the database again!</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>  <span class="c1"># One query per post! ❌</span>
+</code></pre></div>
+
+<p><strong>Solution</strong>: Use <code>select_related</code> and <code>prefetch_related</code>.</p>
+<h3 id="select_related-foreignkey-onetoone">select_related (ForeignKey, OneToOne)<a class="headerlink" href="#select_related-foreignkey-onetoone" title="Permanent link">&para;</a></h3>
+<p>Follows foreign key relationships and fetches related objects in a single query.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># GOOD: Single query using select_related</span>
+<span class="c1"># select_related() follows ForeignKey/OneToOne relationships</span>
+<span class="c1"># Fetches related objects in the same query using SQL JOIN</span>
+<span class="c1"># This makes only 1 query total (instead of N+1 queries)</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Query 1: Get posts + authors in one query</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="c1"># No additional queries! Author data already loaded</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>  <span class="c1"># No additional queries! ✅</span>
+</code></pre></div>
+
+<h3 id="prefetch_related-manytomany-reverse-foreignkey">prefetch_related (ManyToMany, Reverse ForeignKey)<a class="headerlink" href="#prefetch_related-manytomany-reverse-foreignkey" title="Permanent link">&para;</a></h3>
+<p>Prefetches related objects in a separate query.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: Multiple queries for ManyToMany/Reverse ForeignKey</span>
+<span class="c1"># This makes 1 query to get posts, then 1 query per post to get tags</span>
+<span class="c1"># If you have 100 posts, this makes 101 queries!</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Query 1: Get all posts</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="c1"># Query 2, 3, 4, ... N: One query per post to get tags</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>  <span class="c1"># One query per post! ❌</span>
+
+<span class="c1"># GOOD: Two queries total using prefetch_related</span>
+<span class="c1"># prefetch_related() is for ManyToMany and reverse ForeignKey relationships</span>
+<span class="c1"># Makes 2 queries: 1 for posts, 1 for all related tags (then Django matches them)</span>
+<span class="c1"># If you have 100 posts, this makes only 2 queries!</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Query 1: Posts, Query 2: All tags</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="c1"># No additional queries! Tags already loaded and matched</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>  <span class="c1"># No additional queries! ✅</span>
+</code></pre></div>
+
+<h3 id="combined-optimization">Combined Optimization<a class="headerlink" href="#combined-optimization" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Optimize multiple relationships at once</span>
+<span class="c1"># Use select_related for ForeignKey/OneToOne (author)</span>
+<span class="c1"># Use prefetch_related for ManyToMany/reverse ForeignKey (tags, comments)</span>
+<span class="c1"># This makes only 3 queries total: 1 for posts+author, 1 for tags, 1 for comments</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># You can combine with filtering</span>
+<span class="c1"># Filtering happens in the database (efficient)</span>
+<span class="c1"># Optimization still works - only fetches related data for filtered posts</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">author__is_active</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Only get posts from active authors</span>
+<span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="only-and-defer">only() and defer()<a class="headerlink" href="#only-and-defer" title="Permanent link">&para;</a></h3>
+<p>Fetch only needed fields.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Fetch only specific fields (faster, less memory)</span>
+<span class="c1"># only() = Fetch only these fields, defer everything else</span>
+<span class="c1"># Useful when you don&#39;t need all fields (e.g., don&#39;t need large text fields)</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Only fetch these 3 fields</span>
+
+<span class="c1"># Defer heavy fields (skip expensive fields)</span>
+<span class="c1"># defer() = Don&#39;t fetch these fields, fetch everything else</span>
+<span class="c1"># Useful for large fields (images, long text) that you don&#39;t always need</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">defer</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Don&#39;t fetch content field (saves bandwidth/memory)</span>
+</code></pre></div>
+
+<h3 id="annotate-and-aggregate">annotate() and aggregate()<a class="headerlink" href="#annotate-and-aggregate" title="Permanent link">&para;</a></h3>
+<p>Add computed fields and aggregations.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Import aggregation functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Avg</span>
+
+<span class="c1"># annotate() = Add computed field to each object in queryset</span>
+<span class="c1"># Adds comment_count field to each post (computed in database, not Python)</span>
+<span class="c1"># Each post will have a comment_count attribute</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">comment_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="c1"># Now you can do: post.comment_count (number of comments for that post)</span>
+
+<span class="c1"># aggregate() = Compute a single value across entire queryset</span>
+<span class="c1"># Returns a dictionary with the computed value</span>
+<span class="c1"># Gets average comment count across ALL posts (single number)</span>
+<span class="n">avg_comments</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">avg_comments</span><span class="o">=</span><span class="n">Avg</span><span class="p">(</span><span class="s1">&#39;comments__id&#39;</span><span class="p">))</span>
+<span class="c1"># Returns: {&#39;avg_comments&#39;: 5.5} (average number of comments per post)</span>
+</code></pre></div>
+
+<h3 id="using-in-views">Using in Views<a class="headerlink" href="#using-in-views" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/views.py</span>
+<span class="c1"># Import necessary classes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">viewsets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Count</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Post</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PostViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="c1"># Override get_queryset() to optimize database queries</span>
+    <span class="c1"># This is called for list and retrieve operations</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span>
+            <span class="s1">&#39;tags&#39;</span><span class="p">,</span>  <span class="c1"># ManyToMany: prefetch all tags</span>
+            <span class="s1">&#39;comments&#39;</span><span class="p">,</span>  <span class="c1"># Reverse ForeignKey: prefetch all comments</span>
+            <span class="s1">&#39;comments__author&#39;</span>  <span class="c1"># Nested: prefetch author of each comment</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">comment_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Add comment_count field</span>
+        <span class="c1"># This makes only 4 queries total:</span>
+        <span class="c1"># 1. Posts + authors (select_related)</span>
+        <span class="c1"># 2. All tags (prefetch_related)</span>
+        <span class="c1"># 3. All comments (prefetch_related)</span>
+        <span class="c1"># 4. All comment authors (prefetch_related nested)</span>
+        <span class="c1"># Instead of potentially hundreds of queries!</span>
+</code></pre></div>
+
+<h2 id="advanced-query-patterns">Advanced Query Patterns<a class="headerlink" href="#advanced-query-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="complex-filtering">Complex Filtering<a class="headerlink" href="#complex-filtering" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Import Q object for complex queries and aggregation functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Q</span><span class="p">,</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Avg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">timezone</span>
+
+<span class="c1"># OR conditions using Q object</span>
+<span class="c1"># | = OR operator</span>
+<span class="c1"># Finds tasks that are high priority OR past due date</span>
+<span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">Q</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="n">due_date__lt</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="c1"># AND conditions using Q object</span>
+<span class="c1"># &amp; = AND operator (can also use comma in filter())</span>
+<span class="c1"># Finds tasks that are not completed AND high priority</span>
+<span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">Q</span><span class="p">(</span><span class="n">completed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Q</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Exclude certain records</span>
+<span class="c1"># exclude() = NOT condition</span>
+<span class="c1"># Gets all tasks except completed ones</span>
+<span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">completed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Annotate with multiple computed fields and filter by annotation</span>
+<span class="c1"># Adds comment_count and tag_count to each post</span>
+<span class="c1"># Then filters to only posts with 5+ comments</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">comment_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">),</span>  <span class="c1"># Count comments per post</span>
+    <span class="n">tag_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>  <span class="c1"># Count tags per post</span>
+<span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">comment_count__gte</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Only posts with 5 or more comments</span>
+</code></pre></div>
+
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-optimize-blog-api-queries">Exercise 1: Optimize Blog API Queries<a class="headerlink" href="#exercise-1-optimize-blog-api-queries" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create Post, Comment, and Tag models with relationships</li>
+<li>Identify N+1 query problems in your views</li>
+<li>Use select_related() to optimize ForeignKey relationships</li>
+<li>Use prefetch_related() to optimize ManyToMany relationships</li>
+<li>Use annotate() to add comment counts to posts</li>
+<li>Measure query count before and after optimization</li>
+</ol>
+<h3 id="exercise-2-complex-relationships">Exercise 2: Complex Relationships<a class="headerlink" href="#exercise-2-complex-relationships" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create a Task model with ForeignKey to User (assignee)</li>
+<li>Create a Category model with ManyToMany to Task</li>
+<li>Create a Priority model with OneToOne to Task</li>
+<li>Optimize queries to fetch all related data efficiently</li>
+<li>Test with Django Debug Toolbar to verify optimization</li>
+</ol>
+<h3 id="exercise-3-advanced-query-patterns">Exercise 3: Advanced Query Patterns<a class="headerlink" href="#exercise-3-advanced-query-patterns" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Use Q objects for complex OR/AND conditions</li>
+<li>Use annotate() to add computed fields</li>
+<li>Use aggregate() to compute statistics</li>
+<li>Filter by annotated fields</li>
+<li>Combine multiple optimizations in a single queryset</li>
+</ol>
+<h2 id="common-errors-and-solutions">Common Errors and Solutions<a class="headerlink" href="#common-errors-and-solutions" title="Permanent link">&para;</a></h2>
+<h3 id="error-1-n1-query-problem">Error 1: N+1 Query Problem<a class="headerlink" href="#error-1-n1-query-problem" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: Making hundreds of database queries when a few would suffice.</p>
+<p><strong>Symptoms</strong>:
+- Slow API responses
+- High database load
+- Many queries in Django Debug Toolbar</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: N+1 queries</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># 1 query</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>  <span class="c1"># N queries (one per post)</span>
+
+<span class="c1"># GOOD: Optimized with select_related</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># 1 query total</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>  <span class="c1"># No additional queries</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: Always use <code>select_related()</code> for ForeignKey/OneToOne and <code>prefetch_related()</code> for ManyToMany/reverse ForeignKey.</p>
+<hr />
+<h3 id="error-2-djangodbutilsoperationalerror-no-such-column">Error 2: <code>django.db.utils.OperationalError: no such column</code><a class="headerlink" href="#error-2-djangodbutilsoperationalerror-no-such-column" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:</p>
+<div class="codehilite"><pre><span></span><code>django.db.utils.OperationalError: no such column: api_post.author_id
+</code></pre></div>
+
+<p><strong>Why This Happens</strong>:
+- Model has ForeignKey but migration not run
+- Database out of sync with models</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Create migrations</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>makemigrations
+
+<span class="c1"># Apply migrations</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+
+<span class="c1"># If still issues, check if model field name matches database column</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: Always run migrations after adding/changing model relationships.</p>
+<hr />
+<h3 id="error-3-relatedobjectdoesnotexist-post-has-no-author">Error 3: <code>RelatedObjectDoesNotExist: Post has no author</code><a class="headerlink" href="#error-3-relatedobjectdoesnotexist-post-has-no-author" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">RelatedObjectDoesNotExist</span><span class="o">:</span><span class="w"> </span><span class="n">Post</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">author</span>
+</code></pre></div>
+
+<p><strong>Why This Happens</strong>:
+- Accessing ForeignKey that is None
+- Post created without author
+- Author deleted but post still exists (if on_delete not CASCADE)</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check if related object exists</span>
+<span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No author&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or use getattr with default</span>
+<span class="n">author_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: 
+- Set <code>null=True, blank=True</code> if ForeignKey can be empty
+- Or ensure related object is always set when creating</p>
+<hr />
+<h3 id="error-4-djangocoreexceptionsfielderror-cannot-resolve-keyword">Error 4: <code>django.core.exceptions.FieldError: Cannot resolve keyword</code><a class="headerlink" href="#error-4-djangocoreexceptionsfielderror-cannot-resolve-keyword" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:</p>
+<div class="codehilite"><pre><span></span><code>django.core.exceptions.FieldError: Cannot resolve keyword &#39;author__username&#39; into field
+</code></pre></div>
+
+<p><strong>Why This Happens</strong>:
+- Typo in field name
+- Using double underscore on non-relationship field
+- Field doesn't exist</p>
+<p><strong>How to Fix</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># WRONG - Typo</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">authr__username</span><span class="o">=</span><span class="s1">&#39;john&#39;</span><span class="p">)</span>  <span class="c1"># ❌ &#39;authr&#39; should be &#39;author&#39;</span>
+
+<span class="c1"># CORRECT</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">author__username</span><span class="o">=</span><span class="s1">&#39;john&#39;</span><span class="p">)</span>  <span class="c1"># ✅</span>
+
+<span class="c1"># WRONG - Can&#39;t use __ on non-relationship</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">title__username</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>  <span class="c1"># ❌ title is not a relationship</span>
+
+<span class="c1"># CORRECT - Use __ only for relationships</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">title__icontains</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>  <span class="c1"># ✅ icontains is a lookup</span>
+</code></pre></div>
+
+<p><strong>Prevention</strong>: 
+- Double-check field names
+- Use <code>__</code> only for following relationships
+- Use lookups (icontains, exact, etc.) for filtering</p>
+<hr />
+<h2 id="add-ons">Add-ons<a class="headerlink" href="#add-ons" title="Permanent link">&para;</a></h2>
+<h3 id="add-on-1-django-debug-toolbar">Add-on 1: Django Debug Toolbar<a class="headerlink" href="#add-on-1-django-debug-toolbar" title="Permanent link">&para;</a></h3>
+<p>Install Django Debug Toolbar to visualize database queries:</p>
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-debug-toolbar
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># core/settings.py</span>
+<span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+    <span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;debug_toolbar&#39;</span><span class="p">]</span>
+    <span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;debug_toolbar.middleware.DebugToolbarMiddleware&#39;</span><span class="p">]</span>
+    <span class="n">INTERNAL_IPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<h3 id="add-on-2-query-count-middleware">Add-on 2: Query Count Middleware<a class="headerlink" href="#add-on-2-query-count-middleware" title="Permanent link">&para;</a></h3>
+<p>Create middleware to log query counts:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># api/middleware.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">connection</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">QueryCountMiddleware</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_response</span> <span class="o">=</span> <span class="n">get_response</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total queries: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>Congratulations! You've completed Level 3A. You now know:</p>
+<ul>
+<li>✅ Model relationships (ForeignKey, ManyToMany, OneToOne)</li>
+<li>✅ Query optimization (select_related, prefetch_related)</li>
+<li>✅ Advanced query patterns (Q objects, annotate, aggregate)</li>
+<li>✅ Preventing N+1 query problems</li>
+</ul>
+<p><strong>Ready for Level 3B?</strong> Continue to <a href="LEVEL_3B_ADVANCED.html">Level 3B: Advanced - Serializers &amp; Advanced Patterns</a> to learn about nested serializers, custom serializer fields, validation, Django signals, and background tasks!</p>
+<hr />
+<p><strong>Resources:</strong>
+- <a href="https://docs.djangoproject.com/en/stable/topics/db/models/#relationships">Django Model Relationships</a>
+- <a href="https://docs.djangoproject.com/en/stable/topics/db/optimization/">Django Query Optimization</a>
+- <a href="https://django-debug-toolbar.readthedocs.io/">Django Debug Toolbar</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

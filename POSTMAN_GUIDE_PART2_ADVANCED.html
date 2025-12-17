@@ -1,0 +1,1913 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pragnakalpdev54.github.io/DRF/POSTMAN_GUIDE_PART2_ADVANCED.html">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Postman Beginner Guide - Part 2: Advanced Features - DRF Training Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postman-beginner-guide-part-2-advanced-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DRF Training Guide" class="md-header__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DRF Training Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Postman Beginner Guide - Part 2: Advanced Features
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DRF Training Guide" class="md-nav__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DRF Training Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Levels
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Levels
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_0_BEGINNER.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 0 - Beginner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_1_FOUNDATIONS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 - Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_2_INTERMEDIATE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 - Intermediate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_3_ADVANCED.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 - Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_4_SCALABLE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 - Scalable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_5_EXPERT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 5 - Expert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools & Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools & Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CURL_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cURL Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="POSTGRESQL_SETUP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="postman-beginner-guide-part-2-advanced-features">Postman Beginner Guide - Part 2: Advanced Features<a class="headerlink" href="#postman-beginner-guide-part-2-advanced-features" title="Permanent link">&para;</a></h1>
+<h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
+<p>Master advanced Postman features including authentication, automated testing, scripting, mock servers, and comprehensive DRF API testing. By the end of Part 2, you'll be able to build robust API test suites and automate your testing workflow.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#authentication-in-postman">Authentication in Postman</a></li>
+<li><a href="#writing-tests-and-scripts">Writing Tests and Scripts</a></li>
+<li><a href="#pre-request-scripts">Pre-request Scripts</a></li>
+<li><a href="#running-collections-and-automation">Running Collections and Automation</a></li>
+<li><a href="#mock-servers">Mock Servers</a></li>
+<li><a href="#api-documentation">API Documentation</a></li>
+<li><a href="#testing-drf-apis---step-by-step">Testing DRF APIs - Step by Step</a></li>
+<li><a href="#common-errors-and-solutions">Common Errors and Solutions</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#exercises">Exercises</a></li>
+</ol>
+<h2 id="authentication-in-postman">Authentication in Postman<a class="headerlink" href="#authentication-in-postman" title="Permanent link">&para;</a></h2>
+<h3 id="why-authentication-matters">Why Authentication Matters<a class="headerlink" href="#why-authentication-matters" title="Permanent link">&para;</a></h3>
+<p>Most APIs require authentication to:
+- <strong>Protect data</strong>: Only authorized users can access
+- <strong>Track usage</strong>: Know who made which requests
+- <strong>Enforce permissions</strong>: Control what users can do
+- <strong>Security</strong>: Prevent unauthorized access</p>
+<p><strong>Real-world analogy</strong>: Authentication is like showing ID at a bank - you need to prove who you are before accessing your account.</p>
+<h3 id="authentication-types-in-postman">Authentication Types in Postman<a class="headerlink" href="#authentication-types-in-postman" title="Permanent link">&para;</a></h3>
+<p>Postman supports multiple authentication methods:</p>
+<ol>
+<li><strong>No Auth</strong>: Public APIs (no authentication)</li>
+<li><strong>Bearer Token</strong>: JWT tokens, API keys</li>
+<li><strong>Basic Auth</strong>: Username and password</li>
+<li><strong>API Key</strong>: Custom API key authentication</li>
+<li><strong>OAuth 2.0</strong>: Advanced authentication protocol</li>
+<li><strong>Digest Auth</strong>: Challenge-response authentication</li>
+</ol>
+<h3 id="bearer-token-authentication-jwt">Bearer Token Authentication (JWT)<a class="headerlink" href="#bearer-token-authentication-jwt" title="Permanent link">&para;</a></h3>
+<p><strong>Most common for DRF APIs</strong> - Used with JWT (JSON Web Tokens) or simple token authentication.</p>
+<p><strong>How it works:</strong>
+1. User logs in → Server returns JWT token
+2. Client stores token
+3. Client sends token in <code>Authorization</code> header: <code>Bearer &lt;token&gt;</code>
+4. Server validates token and grants access</p>
+<p><strong>Setting up in Postman:</strong></p>
+<p><strong>Method 1: Authorization Tab</strong></p>
+<ol>
+<li>Open request</li>
+<li>Go to <strong>"Authorization"</strong> tab</li>
+<li><strong>Type</strong>: Select <strong>"Bearer Token"</strong></li>
+<li><strong>Token</strong>: Enter your token (or use variable: <code>{{access_token}}</code>)</li>
+<li>Click <strong>"Send"</strong></li>
+</ol>
+<p><strong>Method 2: Headers Tab</strong></p>
+<ol>
+<li>Go to <strong>"Headers"</strong> tab</li>
+<li>Add header:</li>
+<li><strong>Key</strong>: <code>Authorization</code></li>
+<li><strong>Value</strong>: <code>Bearer your_token_here</code></li>
+<li>Or: <code>Bearer {{access_token}}</code></li>
+</ol>
+<p><strong>Example: DRF JWT Authentication</strong></p>
+<p><strong>Step 1: Get Token (Login Request)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/token/</span>
+<span class="n">Headers</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;username&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password123&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Response:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGc...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;refresh&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGc...&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Step 2: Save Token to Environment</strong></p>
+<p>In <strong>Tests</strong> tab of login request:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Parse response</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+<span class="c1">// Save tokens to environment</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">access</span><span class="p">);</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">refresh</span><span class="p">);</span>
+
+<span class="c1">// Optional: Set token expiration time</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;token_expires_at&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3600000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1 hour</span>
+</code></pre></div>
+
+<p><strong>Step 3: Use Token in Protected Requests</strong></p>
+<p>In <strong>Authorization</strong> tab:
+- <strong>Type</strong>: Bearer Token
+- <strong>Token</strong>: <code>{{access_token}}</code></p>
+<p>Now all requests will automatically include: <code>Authorization: Bearer &lt;token&gt;</code></p>
+<h3 id="basic-authentication">Basic Authentication<a class="headerlink" href="#basic-authentication" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Simple username/password authentication.</p>
+<p><strong>Setting up:</strong></p>
+<ol>
+<li>Go to <strong>"Authorization"</strong> tab</li>
+<li><strong>Type</strong>: Select <strong>"Basic Auth"</strong></li>
+<li><strong>Username</strong>: Enter username</li>
+<li><strong>Password</strong>: Enter password</li>
+<li>Postman automatically encodes credentials</li>
+</ol>
+<p><strong>How it works:</strong>
+- Postman encodes <code>username:password</code> in base64
+- Sends as: <code>Authorization: Basic &lt;encoded_credentials&gt;</code></p>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Username</span><span class="o">:</span><span class="w"> </span><span class="n">admin</span>
+<span class="n">Password</span><span class="o">:</span><span class="w"> </span><span class="n">secret123</span>
+</code></pre></div>
+
+<p>Postman sends: <code>Authorization: Basic YWRtaW46c2VjcmV0MTIz</code></p>
+<p><strong>Using Variables:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="x">Username: </span><span class="cp">{{</span><span class="nv">username</span><span class="cp">}}</span>
+<span class="x">Password: </span><span class="cp">{{</span><span class="nv">password</span><span class="cp">}}</span>
+</code></pre></div>
+
+<p>Store credentials in environment variables for security.</p>
+<h3 id="api-key-authentication">API Key Authentication<a class="headerlink" href="#api-key-authentication" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Custom API key authentication (not standard Bearer Token).</p>
+<p><strong>Setting up:</strong></p>
+<ol>
+<li>Go to <strong>"Authorization"</strong> tab</li>
+<li><strong>Type</strong>: Select <strong>"API Key"</strong></li>
+<li><strong>Key</strong>: Header name (e.g., <code>X-API-Key</code>)</li>
+<li><strong>Value</strong>: Your API key</li>
+<li><strong>Add to</strong>: Choose where to add (Header, Query Params)</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Key</span><span class="o">:</span><span class="w"> </span><span class="n">X</span><span class="o">-</span><span class="n">API</span><span class="o">-</span><span class="n">Key</span>
+<span class="n">Value</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">api_key</span><span class="o">}}</span>
+<span class="n">Add</span><span class="w"> </span><span class="n">to</span><span class="o">:</span><span class="w"> </span><span class="n">Header</span>
+</code></pre></div>
+
+<p>This adds header: <code>X-API-Key: your_api_key_here</code></p>
+<p><strong>Common API Key Patterns:</strong></p>
+<ul>
+<li>Header: <code>X-API-Key: &lt;key&gt;</code></li>
+<li>Header: <code>Authorization: ApiKey &lt;key&gt;</code></li>
+<li>Query Param: <code>?api_key=&lt;key&gt;</code></li>
+</ul>
+<h3 id="oauth-20-authentication">OAuth 2.0 Authentication<a class="headerlink" href="#oauth-20-authentication" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Advanced authentication with access tokens, refresh tokens, and scopes.</p>
+<p><strong>OAuth 2.0 Flow:</strong></p>
+<ol>
+<li><strong>Authorization Request</strong>: Get authorization code</li>
+<li><strong>Token Request</strong>: Exchange code for access token</li>
+<li><strong>Access Resource</strong>: Use access token for API calls</li>
+<li><strong>Refresh Token</strong>: Get new access token when expired</li>
+</ol>
+<p><strong>Setting up in Postman:</strong></p>
+<ol>
+<li>Go to <strong>"Authorization"</strong> tab</li>
+<li><strong>Type</strong>: Select <strong>"OAuth 2.0"</strong></li>
+<li>Configure:</li>
+<li><strong>Grant Type</strong>: Authorization Code, Client Credentials, etc.</li>
+<li><strong>Auth URL</strong>: Authorization endpoint</li>
+<li><strong>Access Token URL</strong>: Token endpoint</li>
+<li><strong>Client ID</strong>: Your OAuth client ID</li>
+<li><strong>Client Secret</strong>: Your OAuth client secret</li>
+<li><strong>Scope</strong>: Requested permissions</li>
+<li>Click <strong>"Get New Access Token"</strong></li>
+<li>Click <strong>"Use Token"</strong></li>
+</ol>
+<p><strong>For DRF with OAuth:</strong></p>
+<p>Most DRF APIs use JWT (Bearer Token) instead of full OAuth 2.0. Use Bearer Token method above.</p>
+<h3 id="digest-authentication">Digest Authentication<a class="headerlink" href="#digest-authentication" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Challenge-response authentication (less common).</p>
+<p><strong>Setting up:</strong></p>
+<ol>
+<li>Go to <strong>"Authorization"</strong> tab</li>
+<li><strong>Type</strong>: Select <strong>"Digest Auth"</strong></li>
+<li>Enter <strong>Username</strong> and <strong>Password</strong></li>
+<li>Postman handles the challenge-response automatically</li>
+</ol>
+<h3 id="collection-level-authentication">Collection-Level Authentication<a class="headerlink" href="#collection-level-authentication" title="Permanent link">&para;</a></h3>
+<p><strong>Why</strong>: Set authentication once for entire collection.</p>
+<p><strong>Setting up:</strong></p>
+<ol>
+<li>Right-click collection → <strong>"Edit"</strong></li>
+<li>Go to <strong>"Authorization"</strong> tab</li>
+<li>Select authentication type</li>
+<li>Configure credentials</li>
+<li>All requests in collection inherit this auth</li>
+</ol>
+<p><strong>Override per Request:</strong></p>
+<ul>
+<li>Individual requests can override collection auth</li>
+<li>Set different auth in request's Authorization tab</li>
+</ul>
+<p><strong>Example Collection Auth:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+</code></pre></div>
+
+<p>All requests in collection automatically use this token.</p>
+<h3 id="token-refresh-flow">Token Refresh Flow<a class="headerlink" href="#token-refresh-flow" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: JWT tokens expire. Need to refresh automatically.</p>
+<p><strong>Solution</strong>: Pre-request script to check and refresh token.</p>
+<p><strong>Step 1: Check Token Expiration</strong></p>
+<p>In <strong>Pre-request Script</strong> tab of protected requests:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Get token expiration time</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tokenExpiresAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;token_expires_at&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="c1">// If token expired or expires in next 5 minutes, refresh it</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">tokenExpiresAt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="nx">tokenExpiresAt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">300000</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Token expired or expiring soon, refresh it</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">sendRequest</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;base_url&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/api/token/refresh/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">header</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">raw</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">refresh</span><span class="o">:</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">            </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">access</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;token_expires_at&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3600000</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Step 2: Use Token</strong></p>
+<p>Token is automatically refreshed before request, so it's always valid.</p>
+<h2 id="writing-tests-and-scripts">Writing Tests and Scripts<a class="headerlink" href="#writing-tests-and-scripts" title="Permanent link">&para;</a></h2>
+<h3 id="why-write-tests">Why Write Tests?<a class="headerlink" href="#why-write-tests" title="Permanent link">&para;</a></h3>
+<p><strong>Benefits:</strong>
+- <strong>Automated Validation</strong>: Check if API works correctly
+- <strong>Catch Bugs Early</strong>: Find issues before production
+- <strong>Documentation</strong>: Tests show expected behavior
+- <strong>Regression Testing</strong>: Ensure changes don't break existing features
+- <strong>CI/CD Integration</strong>: Run tests in automated pipelines</p>
+<p><strong>Real-world analogy</strong>: Tests are like quality checks - you verify the product works before shipping.</p>
+<h3 id="test-scripts-tab">Test Scripts Tab<a class="headerlink" href="#test-scripts-tab" title="Permanent link">&para;</a></h3>
+<p><strong>Location</strong>: <strong>"Tests"</strong> tab in request builder</p>
+<p><strong>When tests run</strong>: After response is received</p>
+<p><strong>Language</strong>: JavaScript (Postman uses a JavaScript runtime)</p>
+<h3 id="basic-test-examples">Basic Test Examples<a class="headerlink" href="#basic-test-examples" title="Permanent link">&para;</a></h3>
+<p><strong>Test 1: Check Status Code</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status code is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test 2: Check Response Time</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response time is less than 500ms&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">responseTime</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">below</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test 3: Check Response Body Contains Data</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response has tasks array&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;results&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">results</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">an</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test 4: Check Specific Field Value</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Task has title field&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="common-test-assertions">Common Test Assertions<a class="headerlink" href="#common-test-assertions" title="Permanent link">&para;</a></h3>
+<p><strong>Status Code Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">));</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 201&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">));</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is not 404&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">not</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mf">404</span><span class="p">));</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is success&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">success</span><span class="p">);</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is client error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">clientError</span><span class="p">);</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is server error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">serverError</span><span class="p">);</span>
+</code></pre></div>
+
+<p><strong>Response Time Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response time &lt; 200ms&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">responseTime</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">below</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Header Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Content-Type is JSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">)).</span><span class="nx">to</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Body Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response is JSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">json</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response has property&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">json</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Property value matches&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">completed</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">false</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="advanced-test-examples">Advanced Test Examples<a class="headerlink" href="#advanced-test-examples" title="Permanent link">&para;</a></h3>
+<p><strong>Test: Validate JSON Schema</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response matches schema&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">completed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;completed&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">jsonSchema</span><span class="p">(</span><span class="nx">schema</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test: Check Array Length</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Returns at least 5 tasks&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">results</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="k">of</span><span class="p">.</span><span class="nx">at</span><span class="p">.</span><span class="nx">least</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test: Validate All Items in Array</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;All tasks have required fields&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">results</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">task</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">task</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">task</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test: Save Data for Next Request</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Save task ID for next request&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;task_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">collectionVariables</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;last_created_task_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test: Compare with Previous Response</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Task count increased&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">count</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">previousCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;previous_task_count&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">currentCount</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="nx">previousCount</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;previous_task_count&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">currentCount</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="test-organization">Test Organization<a class="headerlink" href="#test-organization" title="Permanent link">&para;</a></h3>
+<p><strong>Multiple Tests in One Request:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Test 1: Status</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">));</span>
+
+<span class="c1">// Test 2: Response time</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Fast response&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">responseTime</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">below</span><span class="p">(</span><span class="mf">300</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Test 3: Data validation</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Valid task data&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">task</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">task</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">task</span><span class="p">.</span><span class="nx">completed</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">&quot;boolean&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Descriptive Test Names:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// ❌ Bad</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Test 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
+
+<span class="c1">// ✅ Good</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;GET /api/tasks/ returns 200 status&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="collection-level-tests">Collection-Level Tests<a class="headerlink" href="#collection-level-tests" title="Permanent link">&para;</a></h3>
+<p><strong>Why</strong>: Run tests after every request in collection.</p>
+<p><strong>Setting up:</strong></p>
+<ol>
+<li>Right-click collection → <strong>"Edit"</strong></li>
+<li>Go to <strong>"Tests"</strong> tab</li>
+<li>Add tests that run after each request</li>
+</ol>
+<p><strong>Example Collection Test:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Log all requests</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Request:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+
+<span class="c1">// Check if request was successful</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Request completed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">oneOf</span><span class="p">([</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">201</span><span class="p">,</span><span class="w"> </span><span class="mf">204</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="pre-request-scripts">Pre-request Scripts<a class="headerlink" href="#pre-request-scripts" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-pre-request-scripts">What are Pre-request Scripts?<a class="headerlink" href="#what-are-pre-request-scripts" title="Permanent link">&para;</a></h3>
+<p>Scripts that run <strong>before</strong> the request is sent. Useful for:
+- Setting dynamic headers
+- Generating tokens
+- Calculating values
+- Preparing request data</p>
+<p><strong>When they run</strong>: Just before sending the request</p>
+<p><strong>Location</strong>: <strong>"Pre-request Script"</strong> tab</p>
+<h3 id="common-use-cases">Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permanent link">&para;</a></h3>
+<p><strong>1. Set Timestamp Header</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Set current timestamp</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+
+<span class="c1">// Or ISO format</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;iso_timestamp&quot;</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">());</span>
+</code></pre></div>
+
+<p><strong>2. Generate Random Data</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Generate random email</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">randomEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`user</span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10000</span><span class="p">)</span><span class="si">}</span><span class="sb">@example.com`</span><span class="p">;</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;random_email&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">randomEmail</span><span class="p">);</span>
+
+<span class="c1">// Generate random ID</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">randomId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">variables</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;random_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">randomId</span><span class="p">);</span>
+</code></pre></div>
+
+<p><strong>3. Calculate Hash/Signature</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Example: Calculate HMAC signature</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">crypto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto-js&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;api_secret&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">HmacSHA256</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;signature&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">signature</span><span class="p">);</span>
+</code></pre></div>
+
+<p><strong>4. Refresh Token if Expired</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Check if token is expired</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tokenExpiresAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;token_expires_at&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">tokenExpiresAt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">tokenExpiresAt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Refresh token</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">sendRequest</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;base_url&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/api/token/refresh/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">header</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">raw</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">refresh</span><span class="o">:</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">            </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">access</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;token_expires_at&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3600000</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>5. Set Dynamic Headers</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Set custom header with timestamp</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;X-Request-ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">variables</span><span class="p">.</span><span class="nx">replaceIn</span><span class="p">(</span><span class="s2">&quot;{{$randomUUID}}&quot;</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="c1">// Set authorization header dynamically</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Authorization&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bearer &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">token</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>6. Modify Request Body</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Get current body</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">raw</span><span class="p">);</span>
+
+<span class="c1">// Modify it</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">created_at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">();</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">);</span>
+
+<span class="c1">// Update request body</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</code></pre></div>
+
+<h3 id="collection-level-pre-request-scripts">Collection-Level Pre-request Scripts<a class="headerlink" href="#collection-level-pre-request-scripts" title="Permanent link">&para;</a></h3>
+<p><strong>Why</strong>: Run script before every request in collection.</p>
+<p><strong>Setting up:</strong></p>
+<ol>
+<li>Right-click collection → <strong>"Edit"</strong></li>
+<li>Go to <strong>"Pre-request Script"</strong> tab</li>
+<li>Add script</li>
+</ol>
+<p><strong>Example: Set Common Headers</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Set common headers for all requests</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;X-API-Version&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;X-Client-ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;client_id&quot;</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="running-collections-and-automation">Running Collections and Automation<a class="headerlink" href="#running-collections-and-automation" title="Permanent link">&para;</a></h2>
+<h3 id="collection-runner">Collection Runner<a class="headerlink" href="#collection-runner" title="Permanent link">&para;</a></h3>
+<p><strong>What it does</strong>: Runs multiple requests in sequence automatically.</p>
+<p><strong>Use cases:</strong>
+- Test entire API workflow
+- Regression testing
+- Performance testing
+- Automated test suites</p>
+<p><strong>How to use:</strong></p>
+<ol>
+<li>Right-click collection → <strong>"Run collection"</strong></li>
+<li>Configure settings:</li>
+<li><strong>Iterations</strong>: How many times to run (e.g., 1, 5, 10)</li>
+<li><strong>Delay</strong>: Milliseconds between requests</li>
+<li><strong>Data File</strong>: CSV/JSON with test data</li>
+<li><strong>Select Requests</strong>: Choose which requests to run</li>
+<li>Click <strong>"Run <Collection Name>"</strong></li>
+<li>View results</li>
+</ol>
+<h3 id="collection-runner-settings">Collection Runner Settings<a class="headerlink" href="#collection-runner-settings" title="Permanent link">&para;</a></h3>
+<p><strong>Iterations:</strong>
+- Run collection multiple times
+- Useful for load testing
+- Example: 10 iterations = run all requests 10 times</p>
+<p><strong>Delay:</strong>
+- Wait time between requests (milliseconds)
+- Prevents overwhelming server
+- Example: 1000ms = 1 second delay</p>
+<p><strong>Data File:</strong>
+- CSV or JSON file with test data
+- Each iteration uses different row
+- Example: Test with different users</p>
+<p><strong>Request Order:</strong>
+- Drag requests to reorder
+- Run in specific sequence
+- Example: Login → Create → Read → Update → Delete</p>
+<p><strong>Stop on Error:</strong>
+- Stop if any request fails
+- Useful for debugging
+- Or continue and report all errors</p>
+<h3 id="viewing-results">Viewing Results<a class="headerlink" href="#viewing-results" title="Permanent link">&para;</a></h3>
+<p><strong>Summary:</strong>
+- Total requests run
+- Passed/Failed count
+- Average response time</p>
+<p><strong>Request Details:</strong>
+- Individual request results
+- Test results for each
+- Response data</p>
+<p><strong>Export Results:</strong>
+- Save as JSON/HTML
+- Share with team
+- Include in reports</p>
+<h3 id="newman-command-line-runner">Newman - Command Line Runner<a class="headerlink" href="#newman-command-line-runner" title="Permanent link">&para;</a></h3>
+<p><strong>What is Newman?</strong> Postman's command-line collection runner.</p>
+<p><strong>Why use it?</strong>
+- Run in CI/CD pipelines
+- Automated testing
+- No GUI required
+- Integrate with scripts</p>
+<p><strong>Installation:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Using npm</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>newman
+
+<span class="c1"># Using yarn</span>
+yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>newman
+
+<span class="c1"># Verify installation</span>
+newman<span class="w"> </span>--version
+</code></pre></div>
+
+<p><strong>Basic Usage:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Export collection from Postman first</span>
+<span class="c1"># Then run:</span>
+newman<span class="w"> </span>run<span class="w"> </span>collection.json
+</code></pre></div>
+
+<p><strong>With Environment:</strong></p>
+<div class="codehilite"><pre><span></span><code>newman<span class="w"> </span>run<span class="w"> </span>collection.json<span class="w"> </span>-e<span class="w"> </span>environment.json
+</code></pre></div>
+
+<p><strong>Generate HTML Report:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Install reporter</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>newman-reporter-html
+
+<span class="c1"># Run with HTML report</span>
+newman<span class="w"> </span>run<span class="w"> </span>collection.json<span class="w"> </span>-r<span class="w"> </span>html<span class="w"> </span>--reporter-html-export<span class="w"> </span>report.html
+</code></pre></div>
+
+<p><strong>Common Options:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Run with iterations</span>
+newman<span class="w"> </span>run<span class="w"> </span>collection.json<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span>
+
+<span class="c1"># Run with delay</span>
+newman<span class="w"> </span>run<span class="w"> </span>collection.json<span class="w"> </span>-d<span class="w"> </span><span class="m">1000</span>
+
+<span class="c1"># Stop on first error</span>
+newman<span class="w"> </span>run<span class="w"> </span>collection.json<span class="w"> </span>--bail
+
+<span class="c1"># Verbose output</span>
+newman<span class="w"> </span>run<span class="w"> </span>collection.json<span class="w"> </span>--verbose
+</code></pre></div>
+
+<p><strong>CI/CD Integration Example (GitHub Actions):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API Tests</span>
+
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Node.js</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;16&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Newman</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm install -g newman</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run API Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newman run collection.json -e environment.json</span>
+</code></pre></div>
+
+<h2 id="mock-servers">Mock Servers<a class="headerlink" href="#mock-servers" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-mock-servers">What are Mock Servers?<a class="headerlink" href="#what-are-mock-servers" title="Permanent link">&para;</a></h3>
+<p>Mock servers simulate your API without needing the actual backend running.</p>
+<p><strong>Why use them?</strong>
+- <strong>Frontend Development</strong>: Test frontend before backend is ready
+- <strong>Team Collaboration</strong>: Backend and frontend teams work in parallel
+- <strong>Testing</strong>: Test error scenarios easily
+- <strong>Documentation</strong>: Show API behavior</p>
+<p><strong>Real-world analogy</strong>: Mock server is like a practice dummy - you can practice without the real thing.</p>
+<h3 id="creating-a-mock-server">Creating a Mock Server<a class="headerlink" href="#creating-a-mock-server" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: From Collection</strong></p>
+<ol>
+<li>Right-click collection → <strong>"Mock Collection"</strong></li>
+<li>Enter mock server name</li>
+<li>Select environment (optional)</li>
+<li>Click <strong>"Create Mock Server"</strong></li>
+<li>Copy mock server URL</li>
+</ol>
+<p><strong>Method 2: From Request</strong></p>
+<ol>
+<li>Open request</li>
+<li>Click <strong>"Examples"</strong> tab</li>
+<li>Click <strong>"Add Example"</strong></li>
+<li>Set example response</li>
+<li>Save example</li>
+<li>Create mock server from collection</li>
+</ol>
+<h3 id="setting-up-example-responses">Setting Up Example Responses<a class="headerlink" href="#setting-up-example-responses" title="Permanent link">&para;</a></h3>
+<p><strong>Why</strong>: Mock server uses examples to return responses.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open request in collection</li>
+<li>Click <strong>"Examples"</strong> tab (next to Params, Headers, etc.)</li>
+<li>Click <strong>"Add Example"</strong></li>
+<li>Name example (e.g., "Success Response")</li>
+<li>Set response:</li>
+<li><strong>Status Code</strong>: 200</li>
+<li><strong>Body</strong>: JSON response</li>
+<li>Click <strong>"Save"</strong></li>
+</ol>
+<p><strong>Example: Task List Response</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Status</span><span class="o">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="n">OK</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;next&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;previous&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;results&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Example Task 1&quot;</span><span class="o">,</span>
+<span class="w">      </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="o">},</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="o">,</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Example Task 2&quot;</span><span class="o">,</span>
+<span class="w">      </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<h3 id="using-mock-server">Using Mock Server<a class="headerlink" href="#using-mock-server" title="Permanent link">&para;</a></h3>
+<p><strong>Get Mock URL:</strong></p>
+<p>After creating mock server, you'll get a URL like:</p>
+<div class="codehilite"><pre><span></span><code>https://abc123.mock.pstmn.io
+</code></pre></div>
+
+<p><strong>Use in Requests:</strong></p>
+<p>Replace your base URL with mock URL:</p>
+<div class="codehilite"><pre><span></span><code>https://abc123.mock.pstmn.io/api/tasks/
+</code></pre></div>
+
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Works even if backend is down</li>
+<li>Consistent responses for testing</li>
+<li>Fast responses</li>
+<li>No database needed</li>
+</ul>
+<h3 id="advanced-mock-server-features">Advanced Mock Server Features<a class="headerlink" href="#advanced-mock-server-features" title="Permanent link">&para;</a></h3>
+<p><strong>Multiple Examples:</strong></p>
+<p>Create different examples for different scenarios:
+- "Success Response" - 200 OK
+- "Not Found" - 404
+- "Unauthorized" - 401
+- "Server Error" - 500</p>
+<p><strong>Conditional Responses:</strong></p>
+<p>Use pre-request scripts to return different responses based on request data.</p>
+<p><strong>Private Mock Servers:</strong></p>
+<ul>
+<li>Only accessible with API key</li>
+<li>More secure</li>
+<li>For team use only</li>
+</ul>
+<h2 id="api-documentation">API Documentation<a class="headerlink" href="#api-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="auto-generate-documentation">Auto-Generate Documentation<a class="headerlink" href="#auto-generate-documentation" title="Permanent link">&para;</a></h3>
+<p>Postman can automatically generate API documentation from your collections.</p>
+<p><strong>Why:</strong>
+- <strong>Always Up-to-date</strong>: Documentation matches your API
+- <strong>Easy Sharing</strong>: Share with team or public
+- <strong>Interactive</strong>: Try requests directly from docs
+- <strong>Professional</strong>: Looks polished</p>
+<h3 id="generating-documentation">Generating Documentation<a class="headerlink" href="#generating-documentation" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open collection</li>
+<li>Click <strong>"View Documentation"</strong> (or right-click → <strong>"View Documentation"</strong>)</li>
+<li>Click <strong>"Publish"</strong> (if not published)</li>
+<li>Configure:</li>
+<li><strong>Visibility</strong>: Public, Team, or Private</li>
+<li><strong>Description</strong>: Add overview</li>
+<li><strong>Custom Domain</strong>: Use your domain (optional)</li>
+<li>Click <strong>"Publish"</strong></li>
+<li>Copy documentation URL</li>
+</ol>
+<h3 id="documenting-requests">Documenting Requests<a class="headerlink" href="#documenting-requests" title="Permanent link">&para;</a></h3>
+<p><strong>Add Descriptions:</strong></p>
+<ol>
+<li>Open request</li>
+<li>Click request name to edit</li>
+<li>Add description in markdown:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="gu">## Get Task List</span>
+
+Retrieves a list of all tasks for the authenticated user.
+
+<span class="gu">### Parameters</span>
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`page`</span> (optional): Page number for pagination
+<span class="k">-</span><span class="w"> </span><span class="sb">`limit`</span> (optional): Number of items per page
+
+<span class="gu">### Response</span>
+
+Returns a paginated list of tasks.
+</code></pre></div>
+
+<p><strong>Add Examples:</strong></p>
+<ol>
+<li>Go to <strong>"Examples"</strong> tab</li>
+<li>Add multiple examples:</li>
+<li>Success response</li>
+<li>Error responses</li>
+<li>Edge cases</li>
+</ol>
+<p><strong>Add Request/Response Schemas:</strong></p>
+<p>Document the expected request and response structure.</p>
+<h3 id="sharing-documentation">Sharing Documentation<a class="headerlink" href="#sharing-documentation" title="Permanent link">&para;</a></h3>
+<p><strong>Public Documentation:</strong></p>
+<ul>
+<li>Anyone with link can view</li>
+<li>Great for public APIs</li>
+<li>Searchable</li>
+</ul>
+<p><strong>Team Documentation:</strong></p>
+<ul>
+<li>Only team members can view</li>
+<li>Requires Postman account</li>
+<li>Can comment and collaborate</li>
+</ul>
+<p><strong>Private Documentation:</strong></p>
+<ul>
+<li>Only you can view</li>
+<li>For personal use</li>
+<li>Still accessible via link</li>
+</ul>
+<h2 id="testing-drf-apis-step-by-step">Testing DRF APIs - Step by Step<a class="headerlink" href="#testing-drf-apis-step-by-step" title="Permanent link">&para;</a></h2>
+<h3 id="complete-workflow-example">Complete Workflow Example<a class="headerlink" href="#complete-workflow-example" title="Permanent link">&para;</a></h3>
+<p>Let's test a complete DRF Task API workflow.</p>
+<p><strong>Prerequisites:</strong>
+- Django server running on <code>http://localhost:8000</code>
+- Task API with authentication
+- User account created</p>
+<h3 id="step-1-setup-environment">Step 1: Setup Environment<a class="headerlink" href="#step-1-setup-environment" title="Permanent link">&para;</a></h3>
+<p><strong>Create Environment Variables:</strong></p>
+<ol>
+<li>Create "Development" environment</li>
+<li>Add variables:</li>
+<li><code>base_url</code>: <code>http://localhost:8000</code></li>
+<li><code>username</code>: <code>admin</code></li>
+<li><code>password</code>: <code>password123</code></li>
+<li><code>access_token</code>: (leave empty)</li>
+<li><code>refresh_token</code>: (leave empty)</li>
+</ol>
+<h3 id="step-2-create-collection">Step 2: Create Collection<a class="headerlink" href="#step-2-create-collection" title="Permanent link">&para;</a></h3>
+<p><strong>Create "DRF Task API" Collection</strong></p>
+<p>Organize requests in folders:
+- Authentication
+- Tasks (CRUD operations)</p>
+<h3 id="step-3-login-request">Step 3: Login Request<a class="headerlink" href="#step-3-login-request" title="Permanent link">&para;</a></h3>
+<p><strong>Request Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/token/</span>
+<span class="n">Headers</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;username&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{{username}}&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{{password}}&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Check status</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Save tokens</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">access</span><span class="p">);</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">refresh</span><span class="p">);</span>
+
+<span class="c1">// Verify tokens exist</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Access token received&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;access&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">access</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-4-list-tasks">Step 4: List Tasks<a class="headerlink" href="#step-4-list-tasks" title="Permanent link">&para;</a></h3>
+<p><strong>Request Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">GET</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/</span>
+<span class="n">Authorization</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">  </span><span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Response is JSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">json</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Has results array&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;results&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">results</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">an</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Fast response&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">responseTime</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">below</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-5-create-task">Step 5: Create Task<a class="headerlink" href="#step-5-create-task" title="Permanent link">&para;</a></h3>
+<p><strong>Request Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/</span>
+<span class="n">Authorization</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">  </span><span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+<span class="n">Headers</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test Task from Postman&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Created via Postman&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 201&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Task created with ID&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;created_task_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Task has correct data&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="s2">&quot;Test Task from Postman&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">completed</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">false</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-6-get-single-task">Step 6: Get Single Task<a class="headerlink" href="#step-6-get-single-task" title="Permanent link">&para;</a></h3>
+<p><strong>Request Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">GET</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/{{created_task_id}}/</span>
+<span class="n">Authorization</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">  </span><span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Returns correct task&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;created_task_id&quot;</span><span class="p">)));</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-7-update-task">Step 7: Update Task<a class="headerlink" href="#step-7-update-task" title="Permanent link">&para;</a></h3>
+<p><strong>Request Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">PATCH</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/{{created_task_id}}/</span>
+<span class="n">Authorization</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">  </span><span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+<span class="n">Headers</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Task updated&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">completed</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-8-delete-task">Step 8: Delete Task<a class="headerlink" href="#step-8-delete-task" title="Permanent link">&para;</a></h3>
+<p><strong>Request Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">DELETE</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/{{created_task_id}}/</span>
+<span class="n">Authorization</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">  </span><span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 204&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">204</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-9-test-error-cases">Step 9: Test Error Cases<a class="headerlink" href="#step-9-test-error-cases" title="Permanent link">&para;</a></h3>
+<p><strong>Test 401 Unauthorized:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">GET</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/</span>
+<span class="n">Authorization</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">remove</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">invalid</span><span class="w"> </span><span class="n">token</span><span class="o">)</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 401&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Test 404 Not Found:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">GET</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">base_url</span><span class="o">}}/</span><span class="n">api</span><span class="sr">/tasks/99999/</span>
+<span class="n">Authorization</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">  </span><span class="n">Token</span><span class="o">:</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+</code></pre></div>
+
+<p><strong>Tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pm</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Status is 404&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="step-10-run-collection">Step 10: Run Collection<a class="headerlink" href="#step-10-run-collection" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Right-click collection → <strong>"Run collection"</strong></li>
+<li>Ensure requests are in correct order:</li>
+<li>Login</li>
+<li>List Tasks</li>
+<li>Create Task</li>
+<li>Get Task</li>
+<li>Update Task</li>
+<li>Delete Task</li>
+<li>Click <strong>"Run"</strong></li>
+<li>Review results</li>
+</ol>
+<h2 id="common-errors-and-solutions">Common Errors and Solutions<a class="headerlink" href="#common-errors-and-solutions" title="Permanent link">&para;</a></h2>
+<h3 id="error-could-not-get-response">Error: "Could not get response"<a class="headerlink" href="#error-could-not-get-response" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- Server not running
+- Wrong URL
+- Network issues
+- Firewall blocking</p>
+<p><strong>Solutions:</strong>
+1. Check if Django server is running: <code>python manage.py runserver</code>
+2. Verify URL is correct
+3. Check network connection
+4. Try <code>http://localhost:8000</code> in browser first</p>
+<h3 id="error-401-unauthorized">Error: "401 Unauthorized"<a class="headerlink" href="#error-401-unauthorized" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- Missing authentication
+- Invalid token
+- Expired token</p>
+<p><strong>Solutions:</strong>
+1. Check Authorization tab is configured
+2. Verify token is valid (not expired)
+3. Re-login to get new token
+4. Check token format: <code>Bearer &lt;token&gt;</code></p>
+<h3 id="error-404-not-found">Error: "404 Not Found"<a class="headerlink" href="#error-404-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- Wrong URL path
+- API endpoint doesn't exist
+- Typo in URL</p>
+<p><strong>Solutions:</strong>
+1. Verify URL matches Django URLs configuration
+2. Check if endpoint exists: <code>python manage.py show_urls</code>
+3. Test URL in browser first
+4. Check for trailing slashes</p>
+<h3 id="error-400-bad-request">Error: "400 Bad Request"<a class="headerlink" href="#error-400-bad-request" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- Invalid JSON in body
+- Missing required fields
+- Wrong data types</p>
+<p><strong>Solutions:</strong>
+1. Validate JSON syntax (use JSON validator)
+2. Check required fields in API documentation
+3. Verify data types match API expectations
+4. Check Content-Type header is <code>application/json</code></p>
+<h3 id="error-500-internal-server-error">Error: "500 Internal Server Error"<a class="headerlink" href="#error-500-internal-server-error" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- Server-side error
+- Database issue
+- Code bug</p>
+<p><strong>Solutions:</strong>
+1. Check Django server logs
+2. Verify database is accessible
+3. Check for Python errors in console
+4. Review API code for bugs</p>
+<h3 id="error-cors-error">Error: "CORS Error"<a class="headerlink" href="#error-cors-error" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- CORS not configured in Django
+- Wrong origin</p>
+<p><strong>Solutions:</strong>
+1. Install django-cors-headers: <code>pip install django-cors-headers</code>
+2. Add to INSTALLED_APPS: <code>'corsheaders'</code>
+3. Add middleware
+4. Configure CORS_ALLOWED_ORIGINS</p>
+<h3 id="error-ssl-certificate-error">Error: "SSL Certificate Error"<a class="headerlink" href="#error-ssl-certificate-error" title="Permanent link">&para;</a></h3>
+<p><strong>Causes:</strong>
+- Self-signed certificate
+- Invalid certificate</p>
+<p><strong>Solutions:</strong>
+1. For development: Disable SSL verification (Settings → General)
+2. For production: Use valid SSL certificate
+3. Add certificate to Postman (Settings → Certificates)</p>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="1-organize-your-collections">1. Organize Your Collections<a class="headerlink" href="#1-organize-your-collections" title="Permanent link">&para;</a></h3>
+<p><strong>Do:</strong>
+- Group related requests
+- Use folders for categories
+- Name requests descriptively
+- Add descriptions</p>
+<p><strong>Don't:</strong>
+- Put everything in one collection
+- Use vague names like "Test 1"
+- Mix different APIs</p>
+<h3 id="2-use-environments">2. Use Environments<a class="headerlink" href="#2-use-environments" title="Permanent link">&para;</a></h3>
+<p><strong>Do:</strong>
+- Create separate environments for dev/staging/prod
+- Use variables for URLs and credentials
+- Keep sensitive data in environment variables</p>
+<p><strong>Don't:</strong>
+- Hardcode URLs in requests
+- Commit environment files with real credentials
+- Mix environment values</p>
+<h3 id="3-write-meaningful-tests">3. Write Meaningful Tests<a class="headerlink" href="#3-write-meaningful-tests" title="Permanent link">&para;</a></h3>
+<p><strong>Do:</strong>
+- Test status codes
+- Validate response structure
+- Check response times
+- Use descriptive test names</p>
+<p><strong>Don't:</strong>
+- Skip tests
+- Write vague test names
+- Test only happy paths</p>
+<h3 id="4-document-your-requests">4. Document Your Requests<a class="headerlink" href="#4-document-your-requests" title="Permanent link">&para;</a></h3>
+<p><strong>Do:</strong>
+- Add descriptions to requests
+- Document parameters
+- Include examples
+- Explain expected responses</p>
+<p><strong>Don't:</strong>
+- Leave requests undocumented
+- Assume others know what requests do</p>
+<h3 id="5-version-control">5. Version Control<a class="headerlink" href="#5-version-control" title="Permanent link">&para;</a></h3>
+<p><strong>Do:</strong>
+- Export collections regularly
+- Commit collection files to Git
+- Tag versions
+- Document changes</p>
+<p><strong>Don't:</strong>
+- Only keep collections in Postman
+- Forget to export
+- Lose work</p>
+<h3 id="6-security">6. Security<a class="headerlink" href="#6-security" title="Permanent link">&para;</a></h3>
+<p><strong>Do:</strong>
+- Use environment variables for secrets
+- Don't commit tokens
+- Rotate API keys regularly
+- Use different credentials per environment</p>
+<p><strong>Don't:</strong>
+- Hardcode passwords
+- Share environment files publicly
+- Use production credentials in dev</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-complete-crud-workflow">Exercise 1: Complete CRUD Workflow<a class="headerlink" href="#exercise-1-complete-crud-workflow" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Create a collection for a Book API
+2. Set up environment with base URL
+3. Create requests for:
+   - Login (get token)
+   - List books
+   - Create book
+   - Get single book
+   - Update book
+   - Delete book
+4. Add tests to each request
+5. Run collection and verify all pass</p>
+<h3 id="exercise-2-error-handling">Exercise 2: Error Handling<a class="headerlink" href="#exercise-2-error-handling" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Create requests to test error cases:
+   - 401 Unauthorized (no token)
+   - 404 Not Found (invalid ID)
+   - 400 Bad Request (invalid data)
+   - 403 Forbidden (no permission)
+2. Write tests to verify correct error codes
+3. Test error response structure</p>
+<h3 id="exercise-3-pagination-testing">Exercise 3: Pagination Testing<a class="headerlink" href="#exercise-3-pagination-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Create requests to test pagination:
+   - Get first page
+   - Get second page
+   - Test page size parameter
+2. Write tests to verify:
+   - Correct number of items per page
+   - Next/previous page links
+   - Total count</p>
+<h3 id="exercise-4-filtering-and-searching">Exercise 4: Filtering and Searching<a class="headerlink" href="#exercise-4-filtering-and-searching" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Test filtering endpoints:
+   - Filter by status
+   - Filter by date range
+   - Search by keyword
+2. Write tests to verify:
+   - Filters work correctly
+   - Results match filters
+   - Empty results handled</p>
+<h3 id="exercise-5-token-refresh-flow">Exercise 5: Token Refresh Flow<a class="headerlink" href="#exercise-5-token-refresh-flow" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Create pre-request script to:
+   - Check if token is expired
+   - Refresh token if needed
+   - Use new token automatically
+2. Test with expired token
+3. Verify token refresh works</p>
+<h3 id="exercise-6-mock-server">Exercise 6: Mock Server<a class="headerlink" href="#exercise-6-mock-server" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Create mock server for your API
+2. Add example responses for:
+   - Success cases
+   - Error cases
+3. Test frontend with mock server
+4. Verify mock responses match real API</p>
+<h3 id="exercise-7-collection-runner">Exercise 7: Collection Runner<a class="headerlink" href="#exercise-7-collection-runner" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Set up collection runner
+2. Configure:
+   - Multiple iterations
+   - Delay between requests
+   - Data file with test data
+3. Run collection
+4. Analyze results
+5. Export report</p>
+<h3 id="exercise-8-documentation">Exercise 8: Documentation<a class="headerlink" href="#exercise-8-documentation" title="Permanent link">&para;</a></h3>
+<p><strong>Task:</strong>
+1. Add descriptions to all requests
+2. Document parameters and responses
+3. Add multiple examples
+4. Publish documentation
+5. Share with team</p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>Congratulations! You've completed both parts of the Postman guide. You now know:</p>
+<p><strong>Part 1:</strong>
+- ✅ Installation and setup
+- ✅ Interface navigation
+- ✅ Basic requests
+- ✅ Collections and environments</p>
+<p><strong>Part 2:</strong>
+- ✅ Authentication (JWT, Basic, API Key)
+- ✅ Writing tests and scripts
+- ✅ Automation and collection runner
+- ✅ Mock servers and documentation
+- ✅ Complete DRF API testing workflow</p>
+<p><strong>Continue Learning:</strong></p>
+<ol>
+<li><strong>Practice</strong>: Test your own APIs</li>
+<li><strong>Explore</strong>: Try advanced Postman features</li>
+<li><strong>Automate</strong>: Set up CI/CD with Newman</li>
+<li><strong>Collaborate</strong>: Share collections with team</li>
+<li><strong>Document</strong>: Create comprehensive API docs</li>
+</ol>
+<p><strong>Resources:</strong></p>
+<ul>
+<li><a href="https://learning.postman.com/">Postman Learning Center</a></li>
+<li><a href="https://www.postman.com/api-documentation/">Postman API Documentation</a></li>
+<li><a href="https://github.com/postmanlabs/newman">Newman Documentation</a></li>
+<li><a href="https://community.postman.com/">Postman Community</a></li>
+</ul>
+<p><strong>Related Guides:</strong></p>
+<ul>
+<li><a href="CURL_GUIDE.html">cURL Guide</a> - Command-line API testing</li>
+<li><a href="LEVEL_2_INTERMEDIATE.md">Level 2: Intermediate</a> - DRF authentication and permissions</li>
+</ul>
+<hr />
+<p><strong>Happy API Testing!</strong> 🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

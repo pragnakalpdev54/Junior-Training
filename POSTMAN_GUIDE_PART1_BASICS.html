@@ -1,0 +1,1711 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pragnakalpdev54.github.io/DRF/POSTMAN_GUIDE_PART1_BASICS.html">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Postman Beginner Guide - Part 1: Basics - DRF Training Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postman-beginner-guide-part-1-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DRF Training Guide" class="md-header__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DRF Training Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Postman Beginner Guide - Part 1: Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DRF Training Guide" class="md-nav__button md-logo" aria-label="DRF Training Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DRF Training Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Levels
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Levels
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_0_BEGINNER.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 0 - Beginner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_1_FOUNDATIONS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 - Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_2_INTERMEDIATE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 - Intermediate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_3_ADVANCED.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 - Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_4_SCALABLE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 - Scalable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LEVEL_5_EXPERT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 5 - Expert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools & Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools & Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CURL_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cURL Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="POSTGRESQL_SETUP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="postman-beginner-guide-part-1-basics">Postman Beginner Guide - Part 1: Basics<a class="headerlink" href="#postman-beginner-guide-part-1-basics" title="Permanent link">&para;</a></h1>
+<h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
+<p>Learn how to use Postman to test, debug, and interact with REST APIs. This first part covers installation, interface navigation, basic requests, collections, and environments. By the end of Part 1, you'll be able to efficiently test your Django REST Framework APIs and organize your requests.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#what-is-postman">What is Postman?</a></li>
+<li><a href="#installation-and-setup">Installation and Setup</a></li>
+<li><a href="#understanding-the-postman-interface">Understanding the Postman Interface</a></li>
+<li><a href="#sending-your-first-request">Sending Your First Request</a></li>
+<li><a href="#http-methods-explained">HTTP Methods Explained</a></li>
+<li><a href="#working-with-request-headers">Working with Request Headers</a></li>
+<li><a href="#request-body-and-data-types">Request Body and Data Types</a></li>
+<li><a href="#organizing-requests-with-collections">Organizing Requests with Collections</a></li>
+<li><a href="#using-environments-and-variables">Using Environments and Variables</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ol>
+<h2 id="what-is-postman">What is Postman?<a class="headerlink" href="#what-is-postman" title="Permanent link">&para;</a></h2>
+<p>Postman is a powerful API development and testing tool that provides a user-friendly interface for making HTTP requests, testing APIs, and organizing your API workflows.</p>
+<p><strong>Why use Postman?</strong></p>
+<ul>
+<li><strong>Visual Interface</strong>: Easy-to-use GUI instead of command-line tools</li>
+<li><strong>Request Organization</strong>: Group related requests into collections</li>
+<li><strong>Environment Management</strong>: Switch between dev, staging, and production easily</li>
+<li><strong>Automated Testing</strong>: Write tests to validate API responses</li>
+<li><strong>Team Collaboration</strong>: Share collections and work together</li>
+<li><strong>Documentation</strong>: Auto-generate API documentation</li>
+<li><strong>Mock Servers</strong>: Test frontend without backend ready</li>
+</ul>
+<p><strong>Postman vs cURL</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Postman</th>
+<th>cURL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface</td>
+<td>Graphical (GUI)</td>
+<td>Command-line</td>
+</tr>
+<tr>
+<td>Learning Curve</td>
+<td>Easier for beginners</td>
+<td>Requires terminal knowledge</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>Collections and folders</td>
+<td>Scripts and files</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Built-in test scripts</td>
+<td>Manual validation</td>
+</tr>
+<tr>
+<td>Collaboration</td>
+<td>Built-in sharing</td>
+<td>Manual file sharing</td>
+</tr>
+<tr>
+<td>Automation</td>
+<td>Collection Runner, Newman</td>
+<td>Shell scripts</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to use Postman:</strong>
+- Testing APIs during development
+- Exploring and learning new APIs
+- Sharing API requests with team
+- Automated API testing
+- API documentation</p>
+<p><strong>When to use cURL:</strong>
+- CI/CD pipelines
+- Quick terminal testing
+- Scripting and automation
+- Server environments without GUI</p>
+<p>Both tools are valuable - use Postman for development and exploration, cURL for automation and scripts.</p>
+<h2 id="installation-and-setup">Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permanent link">&para;</a></h2>
+<h3 id="windows-installation">Windows Installation<a class="headerlink" href="#windows-installation" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: Direct Download (Recommended)</strong></p>
+<ol>
+<li>Visit the <a href="https://www.postman.com/downloads/">Postman Download Page</a></li>
+<li>Click the <strong>"Download for Windows"</strong> button</li>
+<li>Run the downloaded <code>.exe</code> installer</li>
+<li>Follow the installation wizard</li>
+<li>Launch Postman from the Start menu</li>
+</ol>
+<p><strong>Method 2: Using Chocolatey</strong></p>
+<p>If you have Chocolatey package manager installed:</p>
+<div class="codehilite"><pre><span></span><code>choco<span class="w"> </span>install<span class="w"> </span>postman
+</code></pre></div>
+
+<p><strong>Method 3: Using Winget</strong></p>
+<div class="codehilite"><pre><span></span><code>winget<span class="w"> </span>install<span class="w"> </span>Postman.Postman
+</code></pre></div>
+
+<p><strong>Verification:</strong></p>
+<p>After installation, open Postman. You should see the welcome screen.</p>
+<h3 id="linux-installation">Linux Installation<a class="headerlink" href="#linux-installation" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: Using Snap (Recommended for Ubuntu/Debian)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Install snapd if not already installed</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>snapd
+
+<span class="c1"># Install Postman</span>
+sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>postman
+</code></pre></div>
+
+<p><strong>Method 2: Using Tarball (All Linux Distributions)</strong></p>
+<ol>
+<li>Download the Linux tarball from <a href="https://www.postman.com/downloads/">Postman Download Page</a></li>
+<li>Extract the archive:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Extract to a directory</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span>Postman-linux-x64-*.tar.gz
+
+<span class="c1"># Move to /opt for system-wide access</span>
+sudo<span class="w"> </span>mv<span class="w"> </span>Postman<span class="w"> </span>/opt/
+
+<span class="c1"># Create a symbolic link for easy access</span>
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/opt/Postman/Postman<span class="w"> </span>/usr/local/bin/postman
+</code></pre></div>
+
+<ol>
+<li>Create a desktop entry (optional):</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Create desktop entry file</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>~/.local/share/applications/postman.desktop<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">[Desktop Entry]</span>
+<span class="s">Name=Postman</span>
+<span class="s">Exec=/opt/Postman/Postman</span>
+<span class="s">Icon=/opt/Postman/app/resources/app/assets/icon.png</span>
+<span class="s">Terminal=false</span>
+<span class="s">Type=Application</span>
+<span class="s">Categories=Development;</span>
+<span class="s">EOF</span>
+</code></pre></div>
+
+<p><strong>Method 3: Using AppImage</strong></p>
+<ol>
+<li>Download the AppImage from the Postman website</li>
+<li>Make it executable:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>Postman-*.AppImage
+./Postman-*.AppImage
+</code></pre></div>
+
+<p><strong>Verification:</strong></p>
+<p>Launch Postman from terminal:</p>
+<div class="codehilite"><pre><span></span><code>postman
+</code></pre></div>
+
+<p>Or from applications menu if desktop entry was created.</p>
+<h3 id="creating-a-postman-account">Creating a Postman Account<a class="headerlink" href="#creating-a-postman-account" title="Permanent link">&para;</a></h3>
+<p><strong>Why create an account?</strong></p>
+<ul>
+<li><strong>Sync Across Devices</strong>: Access your collections from any computer</li>
+<li><strong>Team Collaboration</strong>: Share collections with teammates</li>
+<li><strong>Cloud Backup</strong>: Your work is saved automatically</li>
+<li><strong>Advanced Features</strong>: Access to team workspaces and integrations</li>
+</ul>
+<p><strong>Steps to Create Account:</strong></p>
+<ol>
+<li>Open Postman</li>
+<li>Click <strong>"Sign Up"</strong> or <strong>"Create Account"</strong></li>
+<li>Enter your email address</li>
+<li>Choose a password</li>
+<li>Verify your email (check inbox)</li>
+<li>Sign in to Postman</li>
+</ol>
+<p><strong>Note</strong>: You can use Postman without an account, but you'll miss out on syncing and collaboration features.</p>
+<h3 id="initial-setup-and-preferences">Initial Setup and Preferences<a class="headerlink" href="#initial-setup-and-preferences" title="Permanent link">&para;</a></h3>
+<p><strong>Accessing Settings:</strong></p>
+<ul>
+<li><strong>Windows/Linux</strong>: Click the gear icon (⚙️) in the top-right corner</li>
+<li>Or go to: <strong>File → Settings</strong> (or <strong>Postman → Preferences</strong> on Linux)</li>
+</ul>
+<p><strong>Important Settings to Configure:</strong></p>
+<ol>
+<li><strong>Theme</strong>: Choose Light or Dark theme (Settings → Theme)</li>
+<li><strong>Editor Font Size</strong>: Adjust for readability (Settings → Editor)</li>
+<li><strong>Request Timeout</strong>: Set default timeout (Settings → General)</li>
+<li><strong>SSL Certificate Verification</strong>: Keep enabled for security (Settings → General)</li>
+<li><strong>Send Cookies</strong>: Enable to maintain session (Settings → General)</li>
+</ol>
+<p><strong>Keyboard Shortcuts:</strong></p>
+<ul>
+<li><strong>Ctrl+N</strong> (Windows/Linux): New request</li>
+<li><strong>Ctrl+S</strong>: Save request</li>
+<li><strong>Ctrl+Enter</strong>: Send request</li>
+<li><strong>Ctrl+/</strong>: Toggle comment</li>
+<li><strong>Ctrl+B</strong>: Toggle sidebar</li>
+</ul>
+<h2 id="understanding-the-postman-interface">Understanding the Postman Interface<a class="headerlink" href="#understanding-the-postman-interface" title="Permanent link">&para;</a></h2>
+<h3 id="main-components">Main Components<a class="headerlink" href="#main-components" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="err">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">  </span><span class="n">Postman</span><span class="w">                                 </span><span class="p">[</span><span class="err">⚙️</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">☁️</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">👤</span><span class="p">]</span><span class="w">     </span><span class="err">│</span><span class="w">  </span><span class="err">←</span><span class="w"> </span><span class="n">Top</span><span class="w"> </span><span class="n">Bar</span>
+<span class="err">├──────────┬──────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="n">GET</span><span class="w">  </span><span class="p">[</span><span class="n">URL</span><span class="w"> </span><span class="n">Bar</span><span class="p">]</span><span class="w">                    </span><span class="p">[</span><span class="n">Send</span><span class="p">]</span><span class="w">       </span><span class="err">│</span><span class="w">  </span><span class="err">←</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="n">Builder</span>
+<span class="err">│</span><span class="w"> </span><span class="n">Sidebar</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">┌──────────────────────────────────────────┐</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">Params</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Headers</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Body</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">└──────────────────────────────────────────┘</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">                                                  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">┌──────────────────────────────────────────┐</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">Response</span><span class="w">                                </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">←</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="n">Viewer</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">Status</span><span class="o">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="n">OK</span><span class="w">                          </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">Body</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Headers</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Cookies</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">Results</span><span class="w"> </span><span class="err">│</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">  </span><span class="err">└──────────────────────────────────────────┘</span><span class="w">   </span><span class="err">│</span>
+<span class="err">└──────────┴──────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<h3 id="sidebar-components">Sidebar Components<a class="headerlink" href="#sidebar-components" title="Permanent link">&para;</a></h3>
+<p><strong>1. Collections</strong>
+- Organize related requests into folders
+- Share collections with team
+- Run multiple requests in sequence</p>
+<p><strong>2. APIs</strong>
+- Define API schemas
+- Generate documentation
+- Create mock servers</p>
+<p><strong>3. Environments</strong>
+- Store variables for different environments
+- Switch between dev/staging/production
+- Manage configuration values</p>
+<p><strong>4. History</strong>
+- View all requests you've sent
+- Re-run previous requests
+- Save requests to collections</p>
+<h3 id="request-builder">Request Builder<a class="headerlink" href="#request-builder" title="Permanent link">&para;</a></h3>
+<p><strong>1. HTTP Method Dropdown</strong>
+- Select GET, POST, PUT, PATCH, DELETE, etc.
+- Custom methods also supported</p>
+<p><strong>2. URL Bar</strong>
+- Enter the API endpoint URL
+- Supports variables: <code>{{base_url}}/api/tasks/</code>
+- Auto-complete for saved URLs</p>
+<p><strong>3. Tabs</strong>
+- <strong>Params</strong>: Query parameters (e.g., <code>?page=1&amp;limit=10</code>)
+- <strong>Authorization</strong>: Authentication settings
+- <strong>Headers</strong>: HTTP headers
+- <strong>Body</strong>: Request body (for POST, PUT, PATCH)
+- <strong>Pre-request Script</strong>: JavaScript code before request
+- <strong>Tests</strong>: JavaScript code to test response</p>
+<p><strong>4. Send Button</strong>
+- Executes the request
+- Shows response below</p>
+<h3 id="response-viewer">Response Viewer<a class="headerlink" href="#response-viewer" title="Permanent link">&para;</a></h3>
+<p><strong>1. Status Code</strong>
+- Shows HTTP status (200, 404, 500, etc.)
+- Color-coded (green = success, red = error)</p>
+<p><strong>2. Response Time</strong>
+- How long the request took
+- Useful for performance testing</p>
+<p><strong>3. Response Size</strong>
+- Size of the response body
+- Helps identify large responses</p>
+<p><strong>4. Tabs</strong>
+- <strong>Body</strong>: Response content (JSON, XML, HTML, etc.)
+- <strong>Headers</strong>: Response headers
+- <strong>Cookies</strong>: Set cookies
+- <strong>Test Results</strong>: Results of test scripts</p>
+<p><strong>5. Body View Options</strong>
+- <strong>Pretty</strong>: Formatted JSON/XML
+- <strong>Raw</strong>: Unformatted text
+- <strong>Preview</strong>: Rendered HTML
+- <strong>Visualize</strong>: Custom visualization</p>
+<h3 id="console">Console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h3>
+<p><strong>Access</strong>: Click <strong>"Console"</strong> button at bottom or press <strong>Ctrl+Alt+C</strong></p>
+<p><strong>What it shows:</strong>
+- All HTTP requests and responses
+- Console.log() output from scripts
+- Errors and warnings
+- Network request details</p>
+<p><strong>Why it's useful:</strong>
+- Debug request issues
+- See exact headers sent
+- View script execution logs
+- Troubleshoot problems</p>
+<h2 id="sending-your-first-request">Sending Your First Request<a class="headerlink" href="#sending-your-first-request" title="Permanent link">&para;</a></h2>
+<h3 id="step-by-step-your-first-get-request">Step-by-Step: Your First GET Request<a class="headerlink" href="#step-by-step-your-first-get-request" title="Permanent link">&para;</a></h3>
+<p>Let's test a public API to get started:</p>
+<p><strong>1. Create a New Request</strong></p>
+<ul>
+<li>Click <strong>"New"</strong> button (top-left)</li>
+<li>Select <strong>"HTTP Request"</strong></li>
+<li>Or press <strong>Ctrl+N</strong></li>
+</ul>
+<p><strong>2. Set the Request</strong></p>
+<ul>
+<li><strong>Method</strong>: Select <strong>GET</strong> (default)</li>
+<li><strong>URL</strong>: Enter <code>https://jsonplaceholder.typicode.com/posts/1</code></li>
+<li>Click <strong>"Send"</strong></li>
+</ul>
+<p><strong>3. View the Response</strong></p>
+<p>You should see:
+- <strong>Status</strong>: <code>200 OK</code>
+- <strong>Body</strong>: JSON data with post information
+- <strong>Time</strong>: Response time in milliseconds</p>
+<p><strong>Congratulations!</strong> You've sent your first API request.</p>
+<h3 id="testing-your-local-django-api">Testing Your Local Django API<a class="headerlink" href="#testing-your-local-django-api" title="Permanent link">&para;</a></h3>
+<p><strong>Prerequisites:</strong>
+- Django server running on <code>http://localhost:8000</code>
+- An API endpoint (e.g., <code>/api/tasks/</code>)</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><strong>Create New Request</strong></li>
+<li>
+<p>Click <strong>"New"</strong> → <strong>"HTTP Request"</strong></p>
+</li>
+<li>
+<p><strong>Configure Request</strong></p>
+</li>
+<li><strong>Method</strong>: GET</li>
+<li><strong>URL</strong>: <code>http://localhost:8000/api/tasks/</code></li>
+<li>
+<p>Click <strong>"Send"</strong></p>
+</li>
+<li>
+<p><strong>View Response</strong></p>
+</li>
+<li>If server is running: You'll see your API data</li>
+<li>If server is not running: Connection error</li>
+</ol>
+<p><strong>Common First Request Issues:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Could not get response"</td>
+<td>Check if Django server is running</td>
+</tr>
+<tr>
+<td>"Connection refused"</td>
+<td>Verify URL and port (usually 8000)</td>
+</tr>
+<tr>
+<td>"404 Not Found"</td>
+<td>Check URL path matches your Django URLs</td>
+</tr>
+<tr>
+<td>"CORS error"</td>
+<td>Add CORS headers in Django settings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="http-methods-explained">HTTP Methods Explained<a class="headerlink" href="#http-methods-explained" title="Permanent link">&para;</a></h2>
+<h3 id="get-retrieve-data">GET - Retrieve Data<a class="headerlink" href="#get-retrieve-data" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Fetch data from the server</p>
+<p><strong>When to use:</strong>
+- List all items: <code>GET /api/tasks/</code>
+- Get single item: <code>GET /api/tasks/1/</code>
+- Search/filter: <code>GET /api/tasks/?completed=true</code></p>
+<p><strong>Example in Postman:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">GET</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/</span>
+</code></pre></div>
+
+<p><strong>No body required</strong> - data comes in URL or query parameters.</p>
+<h3 id="post-create-new-resource">POST - Create New Resource<a class="headerlink" href="#post-create-new-resource" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Create a new item on the server</p>
+<p><strong>When to use:</strong>
+- Create new task: <code>POST /api/tasks/</code>
+- Register user: <code>POST /api/register/</code>
+- Submit form data</p>
+<p><strong>Example in Postman:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Learn Postman&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Complete the Postman guide&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Important</strong>: Set <strong>Content-Type</strong> header to <code>application/json</code></p>
+<h3 id="put-full-update">PUT - Full Update<a class="headerlink" href="#put-full-update" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Replace entire resource with new data</p>
+<p><strong>When to use:</strong>
+- Update all fields of an item
+- Replace existing resource completely</p>
+<p><strong>Example in Postman:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">PUT</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/1/</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Updated Task&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Updated description&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Note</strong>: PUT requires ALL fields, even if unchanged.</p>
+<h3 id="patch-partial-update">PATCH - Partial Update<a class="headerlink" href="#patch-partial-update" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Update only specific fields</p>
+<p><strong>When to use:</strong>
+- Update single field: <code>PATCH /api/tasks/1/</code> with <code>{"completed": true}</code>
+- Update multiple fields without sending all data</p>
+<p><strong>Example in Postman:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">PATCH</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/1/</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Note</strong>: PATCH only updates provided fields.</p>
+<h3 id="delete-remove-resource">DELETE - Remove Resource<a class="headerlink" href="#delete-remove-resource" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Delete an item from the server</p>
+<p><strong>When to use:</strong>
+- Delete task: <code>DELETE /api/tasks/1/</code>
+- Remove user account
+- Delete any resource</p>
+<p><strong>Example in Postman:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">DELETE</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/1/</span>
+</code></pre></div>
+
+<p><strong>No body required</strong> - item ID is in URL.</p>
+<h3 id="summary-table">Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+<th>Body Required?</th>
+<th>Idempotent?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>Read data</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>Create new</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>Full update</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>Partial update</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Delete</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Idempotent</strong> = Can be called multiple times with same result.</p>
+<h2 id="working-with-request-headers">Working with Request Headers<a class="headerlink" href="#working-with-request-headers" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-headers">What are Headers?<a class="headerlink" href="#what-are-headers" title="Permanent link">&para;</a></h3>
+<p>Headers are metadata sent with HTTP requests that provide additional information about the request or response.</p>
+<p><strong>Common Headers:</strong></p>
+<ul>
+<li><strong>Content-Type</strong>: Type of data being sent (JSON, form-data, etc.)</li>
+<li><strong>Authorization</strong>: Authentication credentials</li>
+<li><strong>Accept</strong>: What response format you want</li>
+<li><strong>User-Agent</strong>: Information about the client</li>
+</ul>
+<h3 id="adding-headers-in-postman">Adding Headers in Postman<a class="headerlink" href="#adding-headers-in-postman" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: Headers Tab</strong></p>
+<ol>
+<li>Click <strong>"Headers"</strong> tab in request builder</li>
+<li>Click <strong>"Add Header"</strong> or use key-value fields</li>
+<li>Enter header name (e.g., <code>Content-Type</code>)</li>
+<li>Enter header value (e.g., <code>application/json</code>)</li>
+<li>Postman auto-completes common headers</li>
+</ol>
+<p><strong>Method 2: Bulk Edit</strong></p>
+<ol>
+<li>Click <strong>"Bulk Edit"</strong> in Headers tab</li>
+<li>Paste headers in format:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>Content-Type: application/json
+Accept: application/json
+Authorization: Bearer token123
+</code></pre></div>
+
+<h3 id="common-headers-for-drf-apis">Common Headers for DRF APIs<a class="headerlink" href="#common-headers-for-drf-apis" title="Permanent link">&para;</a></h3>
+<p><strong>Content-Type</strong></p>
+<div class="codehilite"><pre><span></span><code>Content-Type: application/json
+</code></pre></div>
+
+<p><strong>Why</strong>: Tells server you're sending JSON data. Required for POST/PUT/PATCH with JSON body.</p>
+<p><strong>Accept</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Accept</span><span class="o">:</span><span class="w"> </span><span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</code></pre></div>
+
+<p><strong>Why</strong>: Tells server you want JSON response. DRF returns JSON by default, but good practice to specify.</p>
+<p><strong>Authorization (Bearer Token)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Authorization</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="n">eyJ0eXAiOiJKV1QiLCJhbGc</span><span class="o">...</span>
+</code></pre></div>
+
+<p><strong>Why</strong>: Authenticates requests. Used with JWT or token authentication.</p>
+<p><strong>Authorization (Basic Auth)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Authorization</span><span class="o">:</span><span class="w"> </span><span class="n">Basic</span><span class="w"> </span><span class="n">dXNlcm5hbWU6cGFzc3dvcmQ</span><span class="o">=</span>
+</code></pre></div>
+
+<p><strong>Why</strong>: Basic username/password authentication (base64 encoded).</p>
+<h3 id="preset-headers">Preset Headers<a class="headerlink" href="#preset-headers" title="Permanent link">&para;</a></h3>
+<p>Postman provides preset headers for common scenarios:</p>
+<ol>
+<li>Click <strong>"Presets"</strong> dropdown in Headers tab</li>
+<li>Select from:</li>
+<li><strong>JSON</strong>: Sets <code>Content-Type: application/json</code></li>
+<li><strong>XML</strong>: Sets <code>Content-Type: application/xml</code></li>
+<li><strong>Form URL Encoded</strong>: Sets appropriate content type</li>
+<li><strong>Multipart Form</strong>: For file uploads</li>
+</ol>
+<h3 id="managing-headers">Managing Headers<a class="headerlink" href="#managing-headers" title="Permanent link">&para;</a></h3>
+<p><strong>Disable Header Temporarily:</strong>
+- Uncheck the checkbox next to header
+- Header stays but won't be sent</p>
+<p><strong>Delete Header:</strong>
+- Hover over header row
+- Click <strong>"X"</strong> icon</p>
+<p><strong>Duplicate Header:</strong>
+- Right-click header
+- Select <strong>"Duplicate"</strong></p>
+<h2 id="request-body-and-data-types">Request Body and Data Types<a class="headerlink" href="#request-body-and-data-types" title="Permanent link">&para;</a></h2>
+<h3 id="when-to-use-request-body">When to Use Request Body<a class="headerlink" href="#when-to-use-request-body" title="Permanent link">&para;</a></h3>
+<p>Request body is used with:
+- <strong>POST</strong>: Creating new resources
+- <strong>PUT</strong>: Full updates
+- <strong>PATCH</strong>: Partial updates</p>
+<p><strong>GET and DELETE</strong> don't use request body - data goes in URL or headers.</p>
+<h3 id="body-types-in-postman">Body Types in Postman<a class="headerlink" href="#body-types-in-postman" title="Permanent link">&para;</a></h3>
+<p>Postman supports multiple body formats:</p>
+<p><strong>1. none</strong>
+- No body (for GET, DELETE requests)
+- Default for GET requests</p>
+<p><strong>2. form-data</strong>
+- HTML form submission
+- Key-value pairs
+- Supports file uploads</p>
+<p><strong>3. x-www-form-urlencoded</strong>
+- URL-encoded form data
+- Similar to form-data but encoded differently
+- No file upload support</p>
+<p><strong>4. raw</strong>
+- Send raw data (JSON, XML, text, etc.)
+- Most common for REST APIs
+- Choose format from dropdown (JSON, XML, HTML, Text)</p>
+<p><strong>5. binary</strong>
+- Upload binary files (images, PDFs, etc.)
+- Select file from computer</p>
+<p><strong>6. GraphQL</strong>
+- For GraphQL queries and mutations
+- Advanced feature</p>
+<h3 id="json-body-most-common">JSON Body (Most Common)<a class="headerlink" href="#json-body-most-common" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Most DRF APIs use JSON</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Select <strong>"Body"</strong> tab</li>
+<li>Choose <strong>"raw"</strong></li>
+<li>Select <strong>"JSON"</strong> from dropdown (or "Text" and type JSON)</li>
+<li>Enter JSON data:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Task&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task description&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Example: Creating a Task</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/</span>
+<span class="n">Headers</span><span class="o">:</span>
+<span class="w">  </span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span><span class="w"> </span><span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">raw</span><span class="w"> </span><span class="n">JSON</span><span class="o">):</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Learn Postman&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Complete Postman guide&quot;</span><span class="o">,</span>
+<span class="w">  </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<h3 id="form-data">Form Data<a class="headerlink" href="#form-data" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: HTML forms, file uploads</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Select <strong>"Body"</strong> tab</li>
+<li>Choose <strong>"form-data"</strong></li>
+<li>Add key-value pairs:</li>
+<li><strong>Key</strong>: <code>title</code></li>
+<li><strong>Value</strong>: <code>My Task</code></li>
+<li>For files, change type to <strong>"File"</strong> and select file</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nl">Method</span><span class="p">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="nl">URL</span><span class="p">:</span><span class="w"> </span><span class="n">http</span><span class="o">:</span><span class="c1">//localhost:8000/api/tasks/</span>
+<span class="n">Body</span><span class="w"> </span><span class="p">(</span><span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">)</span><span class="o">:</span>
+<span class="w">  </span><span class="nl">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span>
+<span class="w">  </span><span class="nl">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Task description&quot;</span>
+<span class="w">  </span><span class="nl">file</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">Select</span><span class="w"> </span><span class="n">File</span><span class="p">]</span>
+</code></pre></div>
+
+<h3 id="url-encoded-form">URL-Encoded Form<a class="headerlink" href="#url-encoded-form" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Traditional form submissions</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Select <strong>"Body"</strong> tab</li>
+<li>Choose <strong>"x-www-form-urlencoded"</strong></li>
+<li>Add key-value pairs</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="o">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="n">localhost</span><span class="o">:</span><span class="mi">8000</span><span class="sr">/api/tasks/</span>
+<span class="n">Body</span><span class="w"> </span><span class="o">(</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">):</span>
+<span class="w">  </span><span class="n">title</span><span class="o">:</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">Task</span>
+<span class="w">  </span><span class="n">description</span><span class="o">:</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">description</span>
+</code></pre></div>
+
+<h3 id="binary-body">Binary Body<a class="headerlink" href="#binary-body" title="Permanent link">&para;</a></h3>
+<p><strong>When to use</strong>: Uploading files directly</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Select <strong>"Body"</strong> tab</li>
+<li>Choose <strong>"binary"</strong></li>
+<li>Click <strong>"Select File"</strong></li>
+<li>Choose file from computer</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Method</span><span class="p">:</span><span class="w"> </span><span class="n">POST</span>
+<span class="n">URL</span><span class="p">:</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">tasks</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">upload</span><span class="o">/</span>
+<span class="n">Body</span><span class="w"> </span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+<span class="w">  </span><span class="p">[</span><span class="n">Select</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="n">file</span><span class="p">]</span>
+</code></pre></div>
+
+<h3 id="json-formatting-tips">JSON Formatting Tips<a class="headerlink" href="#json-formatting-tips" title="Permanent link">&para;</a></h3>
+<p><strong>Valid JSON:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;work&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;urgent&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Invalid JSON (Common Mistakes):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// ❌ Trailing comma</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// ← Remove this comma</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ Single quotes (use double quotes)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">i</span><span class="kc">tle</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;Task&#39;</span><span class="w">  </span><span class="c1">// ❌ Wrong</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ Missing quotes around keys</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kc">t</span><span class="err">i</span><span class="kc">tle</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task&quot;</span><span class="w">  </span><span class="c1">// ❌ Wrong</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Postman Auto-Formatting:</strong></p>
+<ul>
+<li>Postman validates JSON as you type</li>
+<li>Red underline = syntax error</li>
+<li>Click <strong>"Beautify"</strong> to format JSON nicely</li>
+</ul>
+<h2 id="organizing-requests-with-collections">Organizing Requests with Collections<a class="headerlink" href="#organizing-requests-with-collections" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-collections">What are Collections?<a class="headerlink" href="#what-are-collections" title="Permanent link">&para;</a></h3>
+<p>Collections are groups of related API requests. Think of them as folders for organizing your API testing.</p>
+<p><strong>Why use Collections?</strong></p>
+<ul>
+<li><strong>Organization</strong>: Group related requests together</li>
+<li><strong>Sharing</strong>: Share entire collection with team</li>
+<li><strong>Automation</strong>: Run all requests in sequence</li>
+<li><strong>Documentation</strong>: Auto-generate API docs</li>
+<li><strong>Version Control</strong>: Export/import collections</li>
+</ul>
+<h3 id="creating-a-collection">Creating a Collection<a class="headerlink" href="#creating-a-collection" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: New Collection Button</strong></p>
+<ol>
+<li>Click <strong>"New"</strong> button (top-left)</li>
+<li>Select <strong>"Collection"</strong></li>
+<li>Enter collection name (e.g., "DRF Task API")</li>
+<li>(Optional) Add description</li>
+<li>Click <strong>"Create"</strong></li>
+</ol>
+<p><strong>Method 2: From Request</strong></p>
+<ol>
+<li>Create or open a request</li>
+<li>Click <strong>"Save"</strong> button</li>
+<li>Click <strong>"+ Create Collection"</strong></li>
+<li>Enter name and create</li>
+<li>Save request to new collection</li>
+</ol>
+<p><strong>Method 3: Sidebar</strong></p>
+<ol>
+<li>Right-click in sidebar</li>
+<li>Select <strong>"New Collection"</strong></li>
+<li>Enter name and create</li>
+</ol>
+<h3 id="adding-requests-to-collection">Adding Requests to Collection<a class="headerlink" href="#adding-requests-to-collection" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: Save Existing Request</strong></p>
+<ol>
+<li>Create or modify a request</li>
+<li>Click <strong>"Save"</strong> button</li>
+<li>Select collection from dropdown</li>
+<li>(Optional) Change request name</li>
+<li>Click <strong>"Save"</strong></li>
+</ol>
+<p><strong>Method 2: Drag and Drop</strong></p>
+<ol>
+<li>Find request in <strong>History</strong></li>
+<li>Drag it to collection in sidebar</li>
+<li>Drop to add</li>
+</ol>
+<p><strong>Method 3: Create in Collection</strong></p>
+<ol>
+<li>Right-click collection</li>
+<li>Select <strong>"Add Request"</strong></li>
+<li>Configure request</li>
+<li>It's automatically saved to collection</li>
+</ol>
+<h3 id="organizing-with-folders">Organizing with Folders<a class="headerlink" href="#organizing-with-folders" title="Permanent link">&para;</a></h3>
+<p><strong>Create Folder:</strong></p>
+<ol>
+<li>Right-click collection</li>
+<li>Select <strong>"Add Folder"</strong></li>
+<li>Enter folder name (e.g., "Authentication", "Tasks", "Users")</li>
+</ol>
+<p><strong>Organize Requests:</strong></p>
+<ul>
+<li>Drag requests into folders</li>
+<li>Create nested folders for better organization</li>
+</ul>
+<p><strong>Example Structure:</strong></p>
+<div class="codehilite"><pre><span></span><code>DRF API Collection
+├── Authentication
+│   ├── Login
+│   ├── Register
+│   └── Refresh Token
+├── Tasks
+│   ├── List Tasks
+│   ├── Create Task
+│   ├── Get Task
+│   ├── Update Task
+│   └── Delete Task
+└── Users
+    ├── List Users
+    └── Get Profile
+</code></pre></div>
+
+<h3 id="collection-settings">Collection Settings<a class="headerlink" href="#collection-settings" title="Permanent link">&para;</a></h3>
+<p><strong>Access</strong>: Right-click collection → <strong>"Edit"</strong></p>
+<p><strong>Settings:</strong></p>
+<ol>
+<li><strong>Name</strong>: Collection name</li>
+<li><strong>Description</strong>: What this collection is for</li>
+<li><strong>Authorization</strong>: Set auth for all requests (can override per request)</li>
+<li><strong>Pre-request Script</strong>: Run before each request</li>
+<li><strong>Tests</strong>: Run after each request</li>
+<li><strong>Variables</strong>: Collection-level variables</li>
+</ol>
+<h3 id="collection-variables">Collection Variables<a class="headerlink" href="#collection-variables" title="Permanent link">&para;</a></h3>
+<p><strong>Why</strong>: Store values used across multiple requests in the collection.</p>
+<p><strong>Example</strong>: Base URL for all requests</p>
+<p><strong>Set Collection Variable:</strong></p>
+<ol>
+<li>Right-click collection → <strong>"Edit"</strong></li>
+<li>Go to <strong>"Variables"</strong> tab</li>
+<li>Add variable:</li>
+<li><strong>Variable</strong>: <code>base_url</code></li>
+<li><strong>Initial Value</strong>: <code>http://localhost:8000</code></li>
+<li><strong>Current Value</strong>: <code>http://localhost:8000</code></li>
+<li>Click <strong>"Save"</strong></li>
+</ol>
+<p><strong>Use in Requests:</strong></p>
+<p>In URL bar, use: <code>{{base_url}}/api/tasks/</code></p>
+<p>Postman replaces <code>{{base_url}}</code> with the actual value.</p>
+<h3 id="running-collections">Running Collections<a class="headerlink" href="#running-collections" title="Permanent link">&para;</a></h3>
+<p><strong>Collection Runner:</strong></p>
+<ol>
+<li>Right-click collection</li>
+<li>Select <strong>"Run collection"</strong></li>
+<li>Configure run settings:</li>
+<li>Select requests to run</li>
+<li>Set iterations (how many times)</li>
+<li>Set delay between requests</li>
+<li>Click <strong>"Run DRF API Collection"</strong></li>
+<li>View results</li>
+</ol>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Test all endpoints after code changes</li>
+<li>Verify API still works</li>
+<li>Run automated tests</li>
+<li>Performance testing</li>
+</ul>
+<h3 id="sharing-collections">Sharing Collections<a class="headerlink" href="#sharing-collections" title="Permanent link">&para;</a></h3>
+<p><strong>Export Collection:</strong></p>
+<ol>
+<li>Right-click collection</li>
+<li>Select <strong>"Export"</strong></li>
+<li>Choose format (Collection v2.1 recommended)</li>
+<li>Save file</li>
+<li>Share file with team</li>
+</ol>
+<p><strong>Import Collection:</strong></p>
+<ol>
+<li>Click <strong>"Import"</strong> button (top-left)</li>
+<li>Select <strong>"File"</strong> or <strong>"Link"</strong></li>
+<li>Choose collection file or paste link</li>
+<li>Click <strong>"Import"</strong></li>
+</ol>
+<p><strong>Share via Link (Postman Account Required):</strong></p>
+<ol>
+<li>Right-click collection</li>
+<li>Select <strong>"Share Collection"</strong></li>
+<li>Choose visibility (Team, Public, Private)</li>
+<li>Copy link and share</li>
+</ol>
+<h2 id="using-environments-and-variables">Using Environments and Variables<a class="headerlink" href="#using-environments-and-variables" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-environments">What are Environments?<a class="headerlink" href="#what-are-environments" title="Permanent link">&para;</a></h3>
+<p>Environments are sets of variables that you can switch between easily. Common use cases:</p>
+<ul>
+<li><strong>Development</strong>: <code>http://localhost:8000</code></li>
+<li><strong>Staging</strong>: <code>https://staging-api.example.com</code></li>
+<li><strong>Production</strong>: <code>https://api.example.com</code></li>
+</ul>
+<p><strong>Why use Environments?</strong></p>
+<ul>
+<li><strong>Quick Switching</strong>: Change base URL with one click</li>
+<li><strong>No Manual Editing</strong>: Don't change URLs in every request</li>
+<li><strong>Team Consistency</strong>: Everyone uses same environment values</li>
+<li><strong>Security</strong>: Store sensitive data (API keys) securely</li>
+</ul>
+<h3 id="creating-an-environment">Creating an Environment<a class="headerlink" href="#creating-an-environment" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Click <strong>"Environments"</strong> in sidebar (or eye icon in top-right)</li>
+<li>Click <strong>"+"</strong> button or <strong>"Create Environment"</strong></li>
+<li>Enter environment name (e.g., "Development")</li>
+<li>Add variables:</li>
+<li><strong>Variable</strong>: <code>base_url</code></li>
+<li><strong>Initial Value</strong>: <code>http://localhost:8000</code></li>
+<li><strong>Current Value</strong>: <code>http://localhost:8000</code></li>
+<li>Click <strong>"Save"</strong></li>
+</ol>
+<p><strong>Example Environment Variables:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Initial Value</th>
+<th>Current Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>base_url</code></td>
+<td><code>http://localhost:8000</code></td>
+<td><code>http://localhost:8000</code></td>
+</tr>
+<tr>
+<td><code>api_key</code></td>
+<td><code>dev_key_123</code></td>
+<td><code>dev_key_123</code></td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>(leave empty)</td>
+<td>(will be set dynamically)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="switching-environments">Switching Environments<a class="headerlink" href="#switching-environments" title="Permanent link">&para;</a></h3>
+<p><strong>Method 1: Dropdown</strong></p>
+<ol>
+<li>Click environment dropdown (top-right, shows "No Environment")</li>
+<li>Select environment (e.g., "Development")</li>
+<li>All <code>{{variable}}</code> references update automatically</li>
+</ol>
+<p><strong>Method 2: Quick Switch</strong></p>
+<ul>
+<li>Use keyboard shortcut (if configured)</li>
+<li>Or click environment name in top-right</li>
+</ul>
+<h3 id="using-variables-in-requests">Using Variables in Requests<a class="headerlink" href="#using-variables-in-requests" title="Permanent link">&para;</a></h3>
+<p><strong>Syntax</strong>: <code>{{variable_name}}</code></p>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="x">URL: </span><span class="cp">{{</span><span class="nv">base_url</span><span class="cp">}}</span><span class="x">/api/tasks/</span>
+</code></pre></div>
+
+<p>When "Development" environment is selected and <code>base_url = http://localhost:8000</code>, the actual URL becomes:</p>
+<div class="codehilite"><pre><span></span><code>http://localhost:8000/api/tasks/
+</code></pre></div>
+
+<p><strong>Where Variables Work:</strong></p>
+<ul>
+<li><strong>URL</strong>: <code>{{base_url}}/api/tasks/</code></li>
+<li><strong>Headers</strong>: <code>Authorization: Bearer {{token}}</code></li>
+<li><strong>Body</strong>: <code>{"user_id": {{user_id}}}</code></li>
+<li><strong>Query Params</strong>: <code>?page={{page_number}}</code></li>
+</ul>
+<h3 id="variable-scopes">Variable Scopes<a class="headerlink" href="#variable-scopes" title="Permanent link">&para;</a></h3>
+<p>Variables have different scopes (priority order):</p>
+<ol>
+<li><strong>Local Variables</strong> (highest priority)</li>
+<li>Set in scripts</li>
+<li>Only available in current request</li>
+<li>
+<p>Example: <code>pm.variables.set("temp_id", "123")</code></p>
+</li>
+<li>
+<p><strong>Environment Variables</strong></p>
+</li>
+<li>Defined in environment</li>
+<li>Available to all requests when environment is active</li>
+<li>
+<p>Example: <code>{{base_url}}</code></p>
+</li>
+<li>
+<p><strong>Collection Variables</strong></p>
+</li>
+<li>Defined in collection settings</li>
+<li>Available to all requests in collection</li>
+<li>
+<p>Example: <code>{{api_version}}</code></p>
+</li>
+<li>
+<p><strong>Global Variables</strong> (lowest priority)</p>
+</li>
+<li>Available everywhere</li>
+<li>Use sparingly</li>
+<li>Example: <code>{{global_timeout}}</code></li>
+</ol>
+<p><strong>Resolution Order</strong>: Local → Environment → Collection → Global</p>
+<h3 id="dynamic-variables">Dynamic Variables<a class="headerlink" href="#dynamic-variables" title="Permanent link">&para;</a></h3>
+<p>Postman provides built-in dynamic variables:</p>
+<p><strong>Random Values:</strong></p>
+<ul>
+<li><code>{{$randomInt}}</code>: Random integer (0-1000)</li>
+<li><code>{{$randomFirstName}}</code>: Random first name</li>
+<li><code>{{$randomLastName}}</code>: Random last name</li>
+<li><code>{{$randomEmail}}</code>: Random email</li>
+<li><code>{{$randomUUID}}</code>: Random UUID</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{$randomFirstName}} {{$randomLastName}}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{$randomEmail}}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{{</span><span class="err">$ra</span><span class="kc">n</span><span class="err">domI</span><span class="kc">nt</span><span class="p">}}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Timestamp:</strong></p>
+<ul>
+<li><code>{{$timestamp}}</code>: Current Unix timestamp</li>
+<li><code>{{$isoTimestamp}}</code>: ISO 8601 timestamp</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{$isoTimestamp}}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="setting-variables-from-response">Setting Variables from Response<a class="headerlink" href="#setting-variables-from-response" title="Permanent link">&para;</a></h3>
+<p><strong>Why</strong>: Extract data from response and use in next request.</p>
+<p><strong>Example: Save JWT Token</strong></p>
+<ol>
+<li><strong>Login Request</strong> (POST <code>/api/token/</code>)</li>
+</ol>
+<p>In <strong>Tests</strong> tab:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Parse response</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pm</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+<span class="c1">// Save token to environment variable</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">access</span><span class="p">);</span>
+<span class="nx">pm</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;refresh_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">refresh</span><span class="p">);</span>
+</code></pre></div>
+
+<ol>
+<li><strong>Use Token in Next Request</strong></li>
+</ol>
+<p>In <strong>Authorization</strong> tab:
+- Type: <strong>Bearer Token</strong>
+- Token: <code>{{access_token}}</code></p>
+<p>Or in <strong>Headers</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Authorization</span><span class="o">:</span><span class="w"> </span><span class="n">Bearer</span><span class="w"> </span><span class="o">{{</span><span class="n">access_token</span><span class="o">}}</span>
+</code></pre></div>
+
+<p><strong>Common Use Cases:</strong></p>
+<ul>
+<li>Save authentication tokens</li>
+<li>Extract IDs from created resources</li>
+<li>Store pagination tokens</li>
+<li>Capture session data</li>
+</ul>
+<h3 id="environment-best-practices">Environment Best Practices<a class="headerlink" href="#environment-best-practices" title="Permanent link">&para;</a></h3>
+<p><strong>1. Use Descriptive Names</strong></p>
+<div class="codehilite"><pre><span></span><code>✅ Good: base_url, api_key, user_id
+❌ Bad: url, key, id
+</code></pre></div>
+
+<p><strong>2. Separate Environments</strong></p>
+<ul>
+<li>Don't mix dev and prod values</li>
+<li>Create separate environments for each</li>
+</ul>
+<p><strong>3. Use Initial Values</strong></p>
+<ul>
+<li>Set default/example values</li>
+<li>Team members can override with Current Value</li>
+</ul>
+<p><strong>4. Secure Sensitive Data</strong></p>
+<ul>
+<li>Don't commit environment files with real API keys</li>
+<li>Use Postman's built-in secret management</li>
+<li>Rotate keys regularly</li>
+</ul>
+<p><strong>5. Document Variables</strong></p>
+<ul>
+<li>Add descriptions in environment</li>
+<li>Document what each variable is for</li>
+<li>Note any special requirements</li>
+</ul>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>Congratulations! You've completed Part 1 of the Postman guide. You now know how to:</p>
+<ul>
+<li>✅ Install Postman on Windows and Linux</li>
+<li>✅ Navigate the Postman interface</li>
+<li>✅ Send basic HTTP requests (GET, POST, PUT, PATCH, DELETE)</li>
+<li>✅ Work with headers and request bodies</li>
+<li>✅ Organize requests into collections</li>
+<li>✅ Use environments and variables</li>
+</ul>
+<p><strong>Continue to Part 2</strong> to learn:
+- Authentication (JWT, Token, OAuth)
+- Writing tests and scripts
+- Automation and collection runner
+- Mock servers and documentation
+- Advanced DRF API testing examples
+- Troubleshooting common issues</p>
+<p><strong>Practice Exercises:</strong></p>
+<ol>
+<li>Create a collection for your DRF API</li>
+<li>Set up Development and Production environments</li>
+<li>Create requests for all CRUD operations</li>
+<li>Use variables for base URL and authentication</li>
+<li>Organize requests into logical folders</li>
+</ol>
+<p><strong>Ready for more?</strong> Continue to <a href="POSTMAN_GUIDE_PART2_ADVANCED.html">Postman Guide - Part 2: Advanced Features</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
