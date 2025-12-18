@@ -4,12 +4,31 @@ use_directory_urls: false
 
 theme:
   name: material
+  custom_dir: overrides
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
   features:
-    - navigation.sections
-    - navigation.expand
-    - navigation.instant
-    - toc.integrate
-    - content.code.copy
+  - navigation.instant
+  - navigation.tracking
+  - navigation.expand
+  - navigation.sections
+  - navigation.top
+  - navigation.footer
+  - toc.follow
+  - content.code.copy
 
 nav:
   - Home: index.md
@@ -45,9 +64,14 @@ markdown_extensions:
   - footnotes
   - codehilite
 
+
+extra_css:
+  - assets/stylesheets/footer.css
+  - assets/stylesheets/ui.css
+  
 extra:
   generator: false
+
   copyright: |
-    © 2025 Pragnakalp Dev  
-    DRF Training Guide
-    **Made by Rahul, Darshit, Nikunj, Dhvanil, Neel**
+    © 2025 Pragnakalp Techlabs · DRF Training Guide  
+    **Made by Rahul, Nikunj, Neel, Dhvanil, Mansi, Darshit**
