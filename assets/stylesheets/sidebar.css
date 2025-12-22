@@ -1,0 +1,98 @@
+/* ============================================
+   CUSTOM SIDEBAR STYLING
+   ============================================ */
+
+/* Make sidebar sections always visible */
+.md-nav__item--section {
+  display: block;
+}
+
+/* Section titles styling */
+.md-nav__title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--md-primary-fg-color);
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+}
+
+/* First section title */
+.md-nav__item:first-child .md-nav__title {
+  margin-top: 0;
+}
+
+/* Nav list styling */
+.md-nav__list {
+  margin-left: 0;
+}
+
+/* Nav items */
+.md-nav__item {
+  margin: 0.25rem 0;
+}
+
+/* Active nav item */
+.md-nav__link--active {
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+  background: rgba(93, 108, 192, 0.1);
+  border-left: 3px solid var(--md-primary-fg-color);
+  padding-left: calc(0.75rem - 3px);
+}
+
+/* Nav links hover */
+.md-nav__link:hover {
+  color: var(--md-primary-fg-color);
+  background: rgba(93, 108, 192, 0.05);
+  transition: all 0.2s ease;
+}
+
+/* Nested items indentation */
+.md-nav__list .md-nav__item {
+  margin-left: 0.5rem;
+}
+
+.md-nav__list .md-nav__item .md-nav__list .md-nav__item {
+  margin-left: 1rem;
+}
+
+/* Collapse/expand icons */
+.md-nav__toggle ~ .md-nav__list {
+  display: block;
+}
+
+.md-nav__toggle:checked ~ .md-nav__list {
+  display: none;
+}
+
+/* Make expandable sections more obvious */
+.md-nav__item--nested > .md-nav__toggle + label::before {
+  content: "▼";
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.md-nav__item--nested > .md-nav__toggle:checked + label::before {
+  transform: rotate(-90deg);
+}
+
+/* Sidebar width adjustment (optional) */
+.md-sidebar {
+  width: 260px;
+}
+
+@media (max-width: 1220px) {
+  .md-sidebar {
+    width: 240px;
+  }
+}
+
+/* Mobile sidebar */
+@media (max-width: 768px) {
+  .md-sidebar {
+    width: 100%;
+  }
+}
